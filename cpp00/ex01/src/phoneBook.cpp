@@ -5,49 +5,58 @@
  */
 
 #include <iostream>
+#include <string>
 
- // create phoneBook class which contain fistName, lastName, nickName, phoneNumber, darkestScret
+ /**
+	* @brief create PhoneBook class
+	* first name, last name, nickname,
+	* phone number,darkest secret
+	*/
 class PhoneBook {
-	public:
-	PhoneBook(std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestScret);
-	std::string getFirstName();
-	std::string getLastName();
-	std::string getNickName();
-	std::string getPhoneNumber();
-	std::string getDarkestScret();
-	void setFirstName(std::string firstName);
-	void setLastName(std::string lastName);
-	void setNickName(std::string nickName);
-	void setPhoneNumber(std::string phoneNumber);
-	void setDarkestScret(std::string darkestScret);
 	private:
 	std::string firstName;
 	std::string lastName;
-	std::string nickName;
+	std::string nickname;
 	std::string phoneNumber;
-	std::string darkestScret;
+	std::string darkestSecret;
+
+	public:
+	PhoneBook();
+	PhoneBook(std::string _firstName,
+						std::string _lastName,
+						std::string _nickname,
+						std::string _phoneNumber,
+						std::string _darkestSecret) {
+		firstName = _firstName;
+		lastName = _lastName;
+		nickname = _nickname;
+		phoneNumber = _phoneNumber;
+		darkestSecret = _darkestSecret;
+	}
 };
 
-
 int main(void) {
-	PhoneBook phoneBook("yongjule", "lee", "yongjule", "010-1234-5678", "12345");
-	std::cout << phoneBook.getFirstName() << std::endl;
-	std::cout << phoneBook.getLastName() << std::endl;
-	std::cout << phoneBook.getNickName() << std::endl;
-	std::cout << phoneBook.getPhoneNumber() << std::endl;
-	std::cout << phoneBook.getDarkestScret() << std::endl;
-	phoneBook.setFirstName("yongjule");
-	phoneBook.setLastName("lee");
-	phoneBook.setNickName("yongjule");
-	phoneBook.setPhoneNumber("010-1234-5678");
-	phoneBook.setDarkestScret("12345");
-	std::cout << phoneBook.getFirstName() << std::endl;
-	std::cout << phoneBook.getLastName() << std::endl;
-	std::cout << phoneBook.getNickName() << std::endl;
-	std::cout << phoneBook.getPhoneNumber() << std::endl;
-	std::cout << phoneBook.getDarkestScret() << std::endl;
+	PhoneBook* phoneBook[8];
+	std::string commend;
+	std::getline(std::cin, commend);
+	std::string list[8];
 
+	if (commend == "ADD") {
+		std::string name;
+		std::cin >> name;
+		std::string number;
+		std::cin >> number;
+		std::cout << "Phone record for " << name << " created." << std::endl;
+	} else if (commend == "SEARCH") {
+		std::string name;
+		std::cin >> name;
+		std::cout << "Phone record for " << name << " not found." << std::endl;
+	} else if (commend == "EXIT") {
+		std::cout << "Goodbye!" << std::endl;
+		return 0;
+	} else {
+		std::cout << "Invalid command." << std::endl;
+	}
 
 	return 0;
-
 }
