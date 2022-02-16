@@ -12,6 +12,7 @@ int main(void) {
 	Contact			contact;
 	std::string commend;
 
+	// TODO : EOF 만났을때, getline 에러 핸들링, cout 포멧팅 해야함
 	while (!std::cin.eof()) {
 		std::getline(std::cin, commend);
 		if (commend == "ADD") {
