@@ -3,9 +3,9 @@ CC						= c++
 ifdef DEBUG
 	CXXFLAGS = --std=c++98 -g3 -fsanitize=address
 else ifdef LEAKS
-	CXXFLAGS = --std=c++98 -g 
+	CXXFLAGS = --std=c++98 -g
 else 
-	CXXFLAGS	= --std=c++98 -Wall -Wextra -Werror 
+	CXXFLAGS	= --std=c++98 -Wall -Wextra -Werror
 endif
 
 NAME			=  megaphone
@@ -23,7 +23,7 @@ OBJS			= ${SRCS:%.cpp=%.o}
 
 OBJ_FILES	= $(OBJS)
 
-COMPILE_MSG = @echo $(UP)$(BOLD)$(L_PUPLE) 📣 ${NAME} Compiled 🥳$(RESET)
+COMPILE_MSG = @echo $(BOLD)$(L_PUPLE) 📣 ${NAME} Compiled 🥳$(RESET)
 
 ######################### Color #########################
 GREEN="\033[32m"
@@ -48,7 +48,7 @@ $(NAME)		: 	$(OBJS)
 
 %.o			: 	%.cpp
 				@$(CC) $(CXXFLAGS)  -c $< -o $@
-				@echo $(BOLD)$(L_GREEN) Compiling with $(CFLAGS)...$(RESET)
+				@echo $(BOLD)$(L_GREEN) Compiling with $(CXXFLAGS)...$(RESET)
 				@echo $(GREEN) [$(notdir $^)] to [$(notdir $@)] $(RESET)
 
 .PHONY			:	clean
