@@ -51,13 +51,13 @@ RESTORE = "\033[u"
 all				:	 $(OBJS) $(NAME)
 
 $(NAME)		: 	$(OBJS)
-							@$(CC) $(CXXFLAGS) $(OBJS)  -I$(INC_DIR) -o $@ 
+							@$(CC) $(CXXFLAGS) $(OBJS) -I$(INC_DIR) -o $@ 
 							@printf $(CUT)$(DOWN)$(CUT)
 							$(COMPILE_MSG)
 
 
 %.o			: 	%.cpp
-				@$(CC) $(CXXFLAGS)  -c $< -o $@
+				@$(CC) $(CXXFLAGS) -I$(INC_DIR)  -c $< -o $@
 				@echo $(CUT)$(BOLD)$(L_GREEN) Compiling with $(CFLAGS)...$(RESET)
 				@echo $(CUT)$(GREEN) [$(notdir $^)] to [$(notdir $@)] $(RESET)
 				@printf $(UP)$(UP)
