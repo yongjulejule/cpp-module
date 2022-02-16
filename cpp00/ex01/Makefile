@@ -15,6 +15,7 @@ INC_DIR		= ./include/
 SRCS_DIR	= ./src/
 
 SRCS			= $(addprefix $(SRCS_DIR), \
+							main.cpp\
 							phoneBook.cpp \
 				)
 
@@ -23,7 +24,7 @@ OBJS			= ${SRCS:%.cpp=%.o}
 
 OBJ_FILES	= $(OBJS)
 
-COMPILE_MSG = @echo $(CUT)$(UP)$(BOLD)$(L_PUPLE) 📣 ${NAME} Compiled 🥳$(RESET)
+COMPILE_MSG = @echo $(BOLD)$(L_PUPLE) 📣 ${NAME} Compiled 🥳$(RESET)
 
 ######################### Color #########################
 GREEN="\033[32m"
@@ -52,15 +53,13 @@ all				:	 $(OBJS) $(NAME)
 
 $(NAME)		: 	$(OBJS)
 							@$(CC) $(CXXFLAGS) $(OBJS) -I$(INC_DIR) -o $@ 
-							@printf $(CUT)$(DOWN)$(CUT)
 							$(COMPILE_MSG)
 
 
 %.o			: 	%.cpp
 				@$(CC) $(CXXFLAGS) -I$(INC_DIR)  -c $< -o $@
-				@echo $(CUT)$(BOLD)$(L_GREEN) Compiling with $(CFLAGS)...$(RESET)
-				@echo $(CUT)$(GREEN) [$(notdir $^)] to [$(notdir $@)] $(RESET)
-				@printf $(UP)$(UP)
+				@echo $(BOLD)$(L_GREEN) Compiling with $(CXXFLAGS)...$(RESET)
+				@echo $(GREEN) [$(notdir $^)] to [$(notdir $@)] $(RESET)
 
 .PHONY			:	clean
 clean			:

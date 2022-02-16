@@ -37,9 +37,6 @@ class Contact {
 	std::string getDarkestSecret();
 };
 
-
-
-
 /**
  * @class PhoneBook
  * @brief PhoneBook class
@@ -47,33 +44,13 @@ class Contact {
 class PhoneBook {
 	private:
 	Contact _contact[8];
-	int idx;
+	int _idx;
 
 	public:
-	PhoneBook() {
-		idx = 0;
-		std::cout << "idx is " << idx << std::endl;
-	}
+	PhoneBook() { _idx = 0; }
 
-	bool updateContact(Contact contact) {
-		std::cout << "idx in update " << idx << std::endl;
-		_contact[idx % MAX_CONTACTS] = contact;
-		idx += 1;
-		return true;
-	}
-
+	bool updateContact();
 	bool printPhoneBook();
 };
-
-bool PhoneBook::printPhoneBook() {
-	int max = (idx < MAX_CONTACTS) ? idx : MAX_CONTACTS;
-	for (int i = 0; i < max; i++) {
-		std::cout << i << std::endl;
-		std::cout << "First Name: " << _contact[i].getFirstName() << std::endl;
-		std::cout << "Last Name: " << _contact[i].getLastName() << std::endl;
-		std::cout << "Nickname: " << _contact[i].getNickname() << std::endl;
-	}
-	return true;
-}
 
 #endif
