@@ -55,4 +55,4 @@ class PhoneBook {
 	bool printPhoneBook(void);
 };
 
-#endif
+#endif // PHONEBOOK_HPP

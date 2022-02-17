@@ -12,4 +12,4 @@
 
 bool getLineFromStdin(std::string& line);
 
-#endif
+#endif // GETLINEFROMSTDIN_HPP

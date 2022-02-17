@@ -1,4 +1,4 @@
-CC						= c++
+CXX						= c++
 
 ifdef DEBUG
 	CXXFLAGS = --std=c++98 -g3 -fsanitize=address
@@ -8,14 +8,13 @@ else
 	CXXFLAGS	= --std=c++98 -Wall -Wextra -Werror
 endif
 
-NAME			=  The\ Job\ Of\ Your\ Dreams
+NAME			=  TheJobOfYourDreams
 
 INC_DIR		= ./include/
 
 SRCS_DIR	= ./src/
 
 SRCS			= $(addprefix $(SRCS_DIR), \
-							main.cpp\
 							tests.cpp\
 							Account.cpp\
 				)
@@ -35,6 +34,7 @@ L_RED="\033[1;31m"
 RESET="\033[0m"
 BOLD="\033[1m"
 L_PUPLE="\033[1;35m"
+L_CYAN="\033[1;96m"
 UP = "\033[A"
 CUT = "\033[K"
 
@@ -44,13 +44,14 @@ CUT = "\033[K"
 all				:	 $(OBJS) $(NAME)
 
 $(NAME)		: 	$(OBJS)
-							@$(CC) $(CXXFLAGS) $(OBJS) -I$(INC_DIR) -o $@ 
+							@$(CXX) $(CXXFLAGS) $(OBJS) -I$(INC_DIR) -o $@ 
+							@echo  $(L_CYAN) 🔗 Linking [$(notdir $^)] to [$@] $(RESET)
 							$(COMPILE_MSG)
 
 
 %.o			: 	%.cpp
-				@$(CC) $(CXXFLAGS) -I$(INC_DIR)  -c $< -o $@
-				@echo $(BOLD)$(L_GREEN) Compiling with $(CXXFLAGS)...$(RESET)
+				@$(CXX) $(CXXFLAGS) -I$(INC_DIR)  -c $< -o $@
+				@echo $(BOLD)$(L_GREEN) Compiling with $(CXXFLAGS) -I$(INC_DIR) ...$(RESET)
 				@echo $(GREEN) [$(notdir $^)] to [$(notdir $@)] $(RESET)
 
 .PHONY			:	clean
