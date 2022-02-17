@@ -4,28 +4,31 @@
  * @date 2022-02-13
  */
 
-#include <iomanip>
 #include "phoneBook.hpp"
+#include "getLineFromStdin.hpp"
 
 int main(void) {
 	PhoneBook		phoneBook;
 	Contact			contact;
 	std::string commend;
 
-	// TODO : EOF 만났을때, getline 에러 핸들링, cout 포멧팅 해야함
-	while (!std::cin.eof()) {
-		std::getline(std::cin, commend);
+	do {
+		std::cout << "Please Enter Commends: ADD, SEARCH, EXIT\n";
+		if (!getLineFromStdin(commend)) break;
 		if (commend == "ADD") {
 			phoneBook.updateContact();
 		} else if (commend == "SEARCH") {
 			phoneBook.printPhoneBook();
 		} else if (commend == "EXIT") {
-			std::cout << "Goodbye!" << std::endl;
-			return 0;
-		} else {
+			break;
+		} else if (!std::cin.eof()) {
 			std::cout << "Invalid command." << std::endl;
 		}
-	}
+	} while (std::cin.rdstate() == (std::ios::goodbit));
+
+	if (std::cin.rdstate() != (std::ios::goodbit | std::ios::eofbit))
+		std::cout << std::endl;
+	std::cout << "Goodbye!" << std::endl;
 
 	return 0;
 }

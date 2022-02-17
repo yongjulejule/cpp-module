@@ -24,17 +24,18 @@ class Contact {
 	std::string _nickname;
 	std::string _phoneNumber;
 	std::string _darkestSecret;
+
 	public:
-	bool setFirstName(std::string firstName);
-	bool setLastName(std::string lastName);
-	bool setNickname(std::string nickname);
-	bool setPhoneNumber(std::string phoneNumber);
-	bool setDarkestSecret(std::string darkestSecret);
-	std::string getFirstName();
-	std::string getLastName();
-	std::string getNickname();
-	std::string getPhoneNumber();
-	std::string getDarkestSecret();
+	void setFirstName(std::string firstName);
+	void setLastName(std::string lastName);
+	void setNickname(std::string nickname);
+	void setPhoneNumber(std::string phoneNumber);
+	void setDarkestSecret(std::string darkestSecret);
+	std::string getFirstName(void);
+	std::string getLastName(void);
+	std::string getNickname(void);
+	std::string getPhoneNumber(void);
+	std::string getDarkestSecret(void);
 };
 
 /**
@@ -47,10 +48,11 @@ class PhoneBook {
 	int _idx;
 
 	public:
-	PhoneBook() { _idx = 0; }
+	PhoneBook(void);
+	~PhoneBook(void);
 
-	bool updateContact();
-	bool printPhoneBook();
+	bool updateContact(void);
+	bool printPhoneBook(void);
 };
 
 #endif

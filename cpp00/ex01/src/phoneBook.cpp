@@ -4,52 +4,56 @@
  * @date 2022-02-13
  */
 
-#include "phoneBook.hpp"
 #include <iomanip>
+#include "phoneBook.hpp"
+#include "getLineFromStdin.hpp"
 
-bool Contact::setFirstName(std::string firstName) {
+inline void Contact::setFirstName(std::string firstName) {
 	_firstName = firstName;
-	return true;
 }
 
-bool Contact::setLastName(std::string lastName) {
+inline void Contact::setLastName(std::string lastName) {
 	_lastName = lastName;
-	return true;
 }
 
-bool Contact::setNickname(std::string nickname) {
+inline void Contact::setNickname(std::string nickname) {
 	_nickname = nickname;
-	return true;
 }
 
-bool Contact::setPhoneNumber(std::string phoneNumber) {
+inline void Contact::setPhoneNumber(std::string phoneNumber) {
 	_phoneNumber = phoneNumber;
-	return true;
 }
 
-bool Contact::setDarkestSecret(std::string darkestSecret) {
+inline void Contact::setDarkestSecret(std::string darkestSecret) {
 	_darkestSecret = darkestSecret;
-	return true;
 }
 
-inline std::string Contact::getFirstName() {
+inline std::string Contact::getFirstName(void) {
 	return _firstName;
 }
 
-inline std::string Contact::getLastName() {
+inline std::string Contact::getLastName(void) {
 	return _lastName;
 }
 
-inline std::string Contact::getNickname() {
+inline std::string Contact::getNickname(void) {
 	return _nickname;
 }
 
-inline std::string Contact::getPhoneNumber() {
+inline std::string Contact::getPhoneNumber(void) {
 	return _phoneNumber;
 }
 
-inline std::string Contact::getDarkestSecret() {
+inline std::string Contact::getDarkestSecret(void) {
 	return _darkestSecret;
+}
+
+PhoneBook::PhoneBook(void) {
+	_idx = 0;
+}
+
+PhoneBook::~PhoneBook(void) {
+	std::cout << "Discard PhoneBook..." << std::endl;
 }
 
 static void printTableRow(void) {
@@ -61,12 +65,20 @@ static void printTableRow(void) {
 		<< std::endl;
 }
 
+static std::string getPrintableString(std::string str) {
+	if (str.length() >= 10) {
+		str = str.substr(0, 8);
+		str += ".";
+	}
+	return str;
+}
+
 static void printTableRow(int idx, Contact contact) {
 	std::cout << '|'
 		<< std::setw(10) << std::right << idx << '|'
-		<< std::setw(10) << contact.getFirstName() << '|'
-		<< std::setw(10) << contact.getLastName() << '|'
-		<< std::setw(10) << contact.getNickname() << '|'
+		<< std::setw(10) << getPrintableString(contact.getFirstName()) << '|'
+		<< std::setw(10) << getPrintableString(contact.getLastName()) << '|'
+		<< std::setw(10) << getPrintableString(contact.getNickname()) << '|'
 		<< std::endl;
 }
 
@@ -79,29 +91,28 @@ bool PhoneBook::printPhoneBook() {
 	return true;
 }
 
-
 bool PhoneBook::updateContact() {
 	Contact contact;
 
 	std::cout << "First Name: ";
 	std::string firstName;
-	std::getline(std::cin, firstName);
+	if (!getLineFromStdin(firstName)) return false;
 	contact.setFirstName(firstName);
 	std::cout << "Last Name: ";
 	std::string lastName;
-	std::getline(std::cin, lastName);
+	if (!getLineFromStdin(lastName)) return false;
 	contact.setLastName(lastName);
 	std::cout << "Nickname: ";
 	std::string nickname;
-	std::getline(std::cin, nickname);
+	if (!getLineFromStdin(nickname)) return false;
 	contact.setNickname(nickname);
 	std::cout << "Phone Number: ";
 	std::string phoneNumber;
-	std::getline(std::cin, phoneNumber);
+	if (!getLineFromStdin(phoneNumber)) return false;
 	contact.setPhoneNumber(phoneNumber);
 	std::cout << "Darkest Secret: ";
 	std::string darkestSecret;
-	std::getline(std::cin, darkestSecret);
+	if (!getLineFromStdin(darkestSecret)) return false;
 	contact.setDarkestSecret(darkestSecret);
 
 	_contact[_idx % MAX_CONTACTS] = contact;
