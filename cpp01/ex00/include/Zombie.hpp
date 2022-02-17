@@ -1,8 +1,12 @@
 /**
  * @file Zombie.hpp
  * @author yongjule (lyjshow200@gmail.com)
- * @brief Zombie class header file
+ * @brief Zombie class declaration
+ * @version 0.1
+ * @date 2022-02-17
+ *
  * @copyright Copyright (c) 2022
+ *
  */
 
 #ifndef ZOMBIE_HPP
@@ -13,12 +17,11 @@
 
 class Zombie {
 	private:
-	std::string name;
-	std::string type;
+	std::string _name;
 	public:
-	Zombie(std::string name, std::string type);
+	Zombie(std::string name);
 	~Zombie();
-	void announce();
+	void announce(void);
 };
 
-#endif
+#endif //ZOMBIE_HPP
