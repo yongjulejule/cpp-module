@@ -75,7 +75,7 @@ static std::string getPrintableString(std::string str) {
 
 static void printTableRow(int idx, Contact contact) {
 	std::cout << '|'
-		<< std::setw(10) << std::right << idx << '|'
+		<< std::setw(10) << std::right << idx + 1 << '|'
 		<< std::setw(10) << getPrintableString(contact.getFirstName()) << '|'
 		<< std::setw(10) << getPrintableString(contact.getLastName()) << '|'
 		<< std::setw(10) << getPrintableString(contact.getNickname()) << '|'
@@ -84,9 +84,28 @@ static void printTableRow(int idx, Contact contact) {
 
 bool PhoneBook::printPhoneBook() {
 	int max = (_idx < MAX_CONTACTS) ? _idx : MAX_CONTACTS;
+
 	printTableRow();
 	for (int i = 0; i < max; i++) {
 		printTableRow(i, _contact[i]);
+	}
+
+	std::cout << "Enter index to search contact: ";
+	std::string commend;
+	if (!getLineFromStdin(commend)) return false;
+	if (commend.size() > 1 || (commend.at(0) < '1' || commend.at(0) > '8')) {
+		std::cout << "Invalid index." << std::endl;
+	} else {
+		int idx = commend.at(0) - '0' - 1;
+		if (idx >= max) {
+			std::cout << "Invalid index." << std::endl;
+		} else {
+			std::cout << "First Name: " << _contact[idx].getFirstName() << std::endl;
+			std::cout << "Last Name: " << _contact[idx].getLastName() << std::endl;
+			std::cout << "Nickname: " << _contact[idx].getNickname() << std::endl;
+			std::cout << "Phone Number: " << _contact[idx].getPhoneNumber() << std::endl;
+			std::cout << "Darkest Secret: " << _contact[idx].getDarkestSecret() << std::endl;
+		}
 	}
 	return true;
 }
