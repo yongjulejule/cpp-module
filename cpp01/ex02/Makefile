@@ -8,15 +8,14 @@ else
 	CXXFLAGS	= --std=c++98 -Wall -Wextra -Werror
 endif
 
-NAME			=  TheJobOfYourDreams
+NAME			=  ThisIsBrain
 
 INC_DIR		= ./include/
 
 SRCS_DIR	= ./src/
 
 SRCS			= $(addprefix $(SRCS_DIR), \
-							tests.cpp\
-							Account.cpp\
+						main.cpp \
 				)
 
 
