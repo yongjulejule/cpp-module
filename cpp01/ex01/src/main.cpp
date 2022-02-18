@@ -12,9 +12,12 @@
 #include "Zombie.hpp"
 
 int main(void) {
-	Zombie* zombie = newZombie("yongjule");
-	Zombie zombie2("ghan");
-	randomChump("jiskim");
-	delete zombie;
+	const int N = 10;
+
+	Zombie* ZombieHorde = zombieHorde(N, "yongjule");
+	for (int i = 0; i < N; i++) {
+		ZombieHorde[i].announce();
+	}
+	delete[] ZombieHorde;
 	return 0;
 }

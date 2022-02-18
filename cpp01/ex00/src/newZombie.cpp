@@ -1,7 +1,7 @@
 /**
  * @file newZombie.cpp
  * @author yongjule (lyjshow200@gmail.com)
- * @brief create new Zombie
+ * @brief create new Zombie in heap
  * @version 0.1
  * @date 2022-02-17
  *

@@ -1,9 +1,9 @@
 /**
  * @file Zombie.hpp
  * @author yongjule (lyjshow200@gmail.com)
- * @brief Zombie class declaration
+ * @brief Zombie class header file
  * @version 0.1
- * @date 2022-02-17
+ * @date 2022-02-18
  *
  * @copyright Copyright (c) 2022
  *
@@ -18,13 +18,15 @@
 class Zombie {
 	private:
 	std::string _name;
+
 	public:
-	Zombie(std::string name);
-	~Zombie();
+	Zombie(void);
+	~Zombie(void);
+
+	void setName(std::string name);
 	void announce(void);
 };
 
-Zombie* newZombie(std::string name);
-void randomChump(std::string name);
+Zombie* zombieHorde(int N, std::string name);
 
 #endif //ZOMBIE_HPP
