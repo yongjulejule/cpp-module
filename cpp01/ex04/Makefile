@@ -16,6 +16,7 @@ SRCS_DIR	= ./src/
 
 SRCS			= $(addprefix $(SRCS_DIR), \
 				  main.cpp \
+					replace.cpp \
 				)
 
 
