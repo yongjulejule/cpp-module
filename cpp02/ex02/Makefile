@@ -8,13 +8,15 @@ else
 	CXXFLAGS	= --std=c++98 -Wall -Wextra -Werror
 endif
 
-NAME			=  #Name of program
+NAME			=  FixedPointer#Name of program
 
 INC_DIR		= ./include/
 
 SRCS_DIR	= ./src/
 
-SRCS			= $(addprefix $(SRCS_DIR), \ 
+SRCS			= $(addprefix $(SRCS_DIR), \
+				main.cpp \
+				Fixed.cpp \
 				)
 
 
