@@ -15,38 +15,54 @@
 int main(void) {
 	Fixed a;
 	Fixed const b(10);
-	Fixed const c(42.42f);
-	Fixed const d(b);
 
 	a = Fixed(1234.4321f);
 
-	Fixed e = a + b;
-	std::cout << "e : " << e << std::endl;
+	std::cout << "=========== Here is example in to Test ===========\n\n";
+	std::cout << "a is " << a << std::endl;
+	std::cout << "b is " << b << std::endl;
 
-	// std::cout << "a + b : " << (a + b) << std::endl;
-	// std::cout << "a - b : " << (a - b) << std::endl;
-	// std::cout << "a * b : " << (a * b) << std::endl;
-	// std::cout << "a / b : " << (a / b) << std::endl;
+	std::cout << "\n=========== Here is Arithmetic operation ===========\n\n";
+	std::cout << "a + b : " << (a + b) << std::endl;
+	std::cout << "a - b : " << (a - b) << std::endl;
+	std::cout << "a * b : " << (a * b) << std::endl;
+	std::cout << "a / b : " << (a / b) << std::endl;
 
-	const Fixed big = Fixed::max(c, b);
-	// Fixed small = Fixed::min(c, b);
-
-	std::cout << "max(a, b) : " << big << std::endl;
-	// std::cout << "min(a, b) : " << small << std::endl;
-
+	std::cout << "\n=========== Here is comparision operation ===========\n\n";
 	std::cout << "a > b : " << (a > b) << std::endl;
 	std::cout << "a < b : " << (a < b) << std::endl;
 	std::cout << "a >= b : " << (a >= b) << std::endl;
 	std::cout << "a <= b : " << (a <= b) << std::endl;
 	std::cout << "a == b : " << (a == b) << std::endl;
 	std::cout << "a != b : " << (a != b) << std::endl;
-	std::cout << "a is " << a.toFloat() << std::endl;
-	std::cout << "b is " << b << std::endl;
-	std::cout << "c is " << c << std::endl;
-	std::cout << "d is " << d << std::endl;
-	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+	std::cout << "\n=========== Here is incre/decrement ===========\n\n";
+	std::cout << "a is " << a << std::endl;
+	std::cout << "a++ : " << a++ << std::endl;
+	std::cout << "a is " << a << std::endl;
+	std::cout << "a-- : " << a-- << std::endl;
+	std::cout << "a is " << a << std::endl;
+	std::cout << "++a : " << ++a << std::endl;
+	std::cout << "a is " << a << std::endl;
+	std::cout << "--a : " << --a << std::endl;
+	std::cout << "a is " << a << std::endl;
+	std::cout << "\n=========== Here is min/max ===========\n\n";
+	const Fixed big = Fixed::max(a, b);
+	Fixed small = Fixed::min(a, b);
+
+	std::cout << "max(a, b) : " << big << std::endl;
+	std::cout << "min(a, b) : " << small << std::endl;
+
+
+	// From Subject
+	std::cout << "\n=========== Here is example in Subject ===========\n\n";
+	Fixed A;
+	Fixed const B(Fixed(5.05f) * Fixed(2));
+	std::cout << A << std::endl;
+	std::cout << ++A << std::endl;
+	std::cout << A << std::endl;
+	std::cout << A++ << std::endl;
+	std::cout << A << std::endl;
+	std::cout << B << std::endl;
+	std::cout << Fixed::max(A, B) << std::endl;
 	return 0;
 }

@@ -25,15 +25,18 @@ class Fixed {
 	Fixed(float num);
 	Fixed(const Fixed& src);
 	~Fixed(void);
-	const Fixed& operator = (const Fixed& src);
-	const Fixed operator + (const Fixed& src);
-	const Fixed operator - (const Fixed& src);
-	const Fixed operator * (const Fixed& src);
-	const Fixed operator / (const Fixed& src);
-	const Fixed& operator ++ (void);
-	const Fixed& operator -- (void);
-	const Fixed operator ++ (int);
-	const Fixed operator -- (int);
+
+	Fixed& operator = (const Fixed& src);
+	Fixed operator + (const Fixed& src);
+	Fixed operator - (const Fixed& src);
+	Fixed operator * (const Fixed& src);
+	Fixed operator / (const Fixed& src);
+
+	Fixed& operator ++ (void);
+	Fixed& operator -- (void);
+	Fixed operator ++ (int);
+	Fixed operator -- (int);
+
 	bool operator == (const Fixed& src);
 	bool operator > (const Fixed& src);
 	bool operator < (const Fixed& src);
@@ -47,9 +50,9 @@ class Fixed {
 	int toInt(void) const;
 	float toFloat(void) const;
 
-	// static Fixed& min(Fixed& v1, Fixed& v2);
-	// static Fixed& max(Fixed& v1, Fixed& v2);
-	// static const Fixed& min(const Fixed& v1, const Fixed& v2);
+	static Fixed& min(Fixed& v1, Fixed& v2);
+	static Fixed& max(Fixed& v1, Fixed& v2);
+	static const Fixed& min(const Fixed& v1, const Fixed& v2);
 	static const Fixed& max(const Fixed& v1, const Fixed& v2);
 };
 
