@@ -13,13 +13,28 @@
 
 #include "Fixed.hpp"
 #include "Point.hpp"
+void printBSPResult(Point &a, Point &b, Point &c, Point &point, bool result) {
+  if (result)
+    std::cout << point << " is in the triangle " << a << b << c << std::endl;
+  else
+    std::cout << point << " is not in the triangle " << a << b << c
+              << std::endl;
+}
 
 int main(void) {
-  Point a(10, 20);
-  Point b(1, 2);
-  Point c(100, 201);
-  Point point(1, 4);
-  std::cout << bsp(a, b, c, point) << std::endl;
+  Point a(0, 10);
+  Point b(10, 0);
+  Point c(0, 0);
+  Point point(4.99f, 4.99f);
+  bool ret;
+  ret = bsp(a, b, c, point);
+  printBSPResult(a, b, c, point, ret);
+  Point point2(5, 5);
+  ret = bsp(a, b, c, point2);
+  printBSPResult(a, b, c, point2, ret);
+  Point point3(0, 0);
+  ret = bsp(a, b, c, point3);
+  printBSPResult(a, b, c, point3, ret);
 
   return 0;
 }

@@ -15,17 +15,11 @@
 
 Point::Point(void) : _x(0), _y(0){};
 
-Point::Point(Fixed& x, Fixed& y) : _x(x), _y(y) {
-  std::cout << "Fixed Constructor Called\n";
-}
+Point::Point(Fixed& x, Fixed& y) : _x(x), _y(y) {}
 
-Point::Point(int x, int y) : _x(x), _y(y) {
-  std::cout << "Int Constructor Called\n";
-}
+Point::Point(int x, int y) : _x(x), _y(y) {}
 
-Point::Point(float x, float y) : _x(x), _y(y) {
-  std::cout << "Float Constructor Called\n";
-}
+Point::Point(float x, float y) : _x(x), _y(y) {}
 
 Point& Point::operator=(const Point& src) {
   if (this == &src) return *this;
@@ -41,15 +35,9 @@ Point Point::operator-(const Point& src) {
   return tmp;
 }
 
-// Fixed Point::crossProduct(const Point& y) {
-//   Point x = *this;
-//   return (const_cast<Fixed&>(x.getX()) * y.getY()) -
-//          (const_cast<Fixed&>(x.getY()) * y.getX());
-// }
-
 Point::Point(const Point& src) { *this = src; }
 
-Point::~Point(void) { std::cout << "Destructor Called\n"; }
+Point::~Point(void) {}
 
 const Fixed& Point::getX(void) const { return _x; }
 const Fixed& Point::getY(void) const { return _y; }
