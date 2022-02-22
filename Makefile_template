@@ -14,7 +14,8 @@ INC_DIR		= ./include/
 
 SRCS_DIR	= ./src/
 
-SRCS			= $(addprefix $(SRCS_DIR), \ 
+SRCS			= $(addprefix $(SRCS_DIR), \
+				  main.cpp \
 				)
 
 
