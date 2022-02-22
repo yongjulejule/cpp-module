@@ -10,21 +10,23 @@
  */
 
 #ifndef FIXED_HPP
-# define FIXED_HPP
+#define FIXED_HPP
 
 class Fixed {
-	private:
-	int _fixedPoint;
-	static const int _fracBits = 8;
+ private:
+  int _fixedPoint;
+  static const int _fracBits = 8;
 
-	public:
-	Fixed(void);
-	Fixed(const Fixed& src);
-	~Fixed(void);
-	const Fixed& operator = (const Fixed& src);
+ public:
+  Fixed(void);
+  Fixed(const Fixed& src);
+  ~Fixed(void);
 
-	int getRawBits(void) const;
-	void setRawBits(int const raw);
+  // assign operator
+  const Fixed& operator=(const Fixed& src);
+
+  int getRawBits(void) const;
+  void setRawBits(int const raw);
 };
 
-#endif // FIXED_HPP
+#endif  // FIXED_HPP

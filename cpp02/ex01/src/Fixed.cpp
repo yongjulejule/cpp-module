@@ -9,57 +9,49 @@
  *
  */
 
+#include "Fixed.hpp"
+
 #include <cmath>
 #include <iostream>
 
-#include "Fixed.hpp"
-
 Fixed::Fixed(void) {
-	std::cout << "Default constructor called\n";
-	setRawBits(0);
+  std::cout << "Default constructor called\n";
+  setRawBits(0);
 }
 
 Fixed::Fixed(int num) {
-	std::cout << "Int constructor called\n";
-	setRawBits(num << _fracBits);
+  std::cout << "Int constructor called\n";
+  setRawBits(num << _fracBits);
 }
 
 Fixed::Fixed(float num) {
-	std::cout << "Float constructor called\n";
-	setRawBits(roundf((num * (1 << _fracBits))));
+  std::cout << "Float constructor called\n";
+  setRawBits(roundf((num * (1 << _fracBits))));
 }
 
 Fixed::Fixed(const Fixed& src) {
-	std::cout << "Copy constructor called\n";
-	*this = src;
+  std::cout << "Copy constructor called\n";
+  *this = src;
 }
 
-Fixed::~Fixed(void) {
-	std::cout << "Destructor called\n";
+Fixed::~Fixed(void) { std::cout << "Destructor called\n"; }
+
+const Fixed& Fixed::operator=(const Fixed& src) {
+  std::cout << "Assignation operator called\n";
+  this->setRawBits(src.getRawBits());
+  return src;
 }
 
-const Fixed& Fixed::operator = (const Fixed& src) {
-	std::cout << "Assignation operator called\n";
-	this->setRawBits(src.getRawBits());
-	return src;
+std::ostream& operator<<(std::ostream& out, const Fixed& src) {
+  return out << (src.toFloat());
 }
 
-std::ostream& operator << (std::ostream& out, const Fixed& src) {
-	return out << (src.toFloat());
-}
+int Fixed::getRawBits(void) const { return _fixedPoint; }
 
-int Fixed::getRawBits(void) const {
-	return _fixedPoint;
-}
+void Fixed::setRawBits(int const raw) { _fixedPoint = raw; }
 
-void Fixed::setRawBits(int const raw) {
-	_fixedPoint = raw;
-}
-
-int Fixed::toInt(void) const {
-	return getRawBits() >> _fracBits;
-}
+int Fixed::toInt(void) const { return getRawBits() >> _fracBits; }
 
 float Fixed::toFloat(void) const {
-	return static_cast<float>(getRawBits()) / (1 << _fracBits);
+  return static_cast<float>(getRawBits()) / (1 << _fracBits);
 }
