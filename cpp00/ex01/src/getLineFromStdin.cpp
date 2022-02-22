@@ -8,11 +8,11 @@
 #include <string>
 
 bool getLineFromStdin(std::string& line) {
-	static std::istream& is = std::cin;
-	std::getline(is, line);
-	if (is.rdstate() != std::ios::goodbit) {
-		is.clear();
-		return false;
-	}
-	return true;
+  static std::istream& is = std::cin;
+  std::getline(is, line);
+  if (is.rdstate() != std::ios::goodbit) {
+    is.clear();
+    return false;
+  }
+  return true;
 }

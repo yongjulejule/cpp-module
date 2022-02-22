@@ -5,11 +5,11 @@
  */
 
 #ifndef GETLINEFROMSTDIN_HPP
-# define GETLINEFROMSTDIN_HPP
+#define GETLINEFROMSTDIN_HPP
 
-#	include <iostream>
-# include <string>
+#include <iostream>
+#include <string>
 
 bool getLineFromStdin(std::string& line);
 
-#endif // GETLINEFROMSTDIN_HPP
+#endif  // GETLINEFROMSTDIN_HPP
