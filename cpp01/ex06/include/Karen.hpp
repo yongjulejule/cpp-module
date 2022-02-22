@@ -10,31 +10,29 @@
  */
 
 #ifndef KAREN_HPP
-# define KAREN_HPP
+#define KAREN_HPP
 
-# include <string>
-
+#include <string>
 
 class Karen {
-	private:
+ private:
+  typedef enum {
+    DEBUG,
+    INFO,
+    WARNING,
+    ERROR,
+  } logLevel;
 
-	typedef enum {
-		DEBUG,
-		INFO,
-		WARNING,
-		ERROR,
-	} logLevel;
+  void debug(void);
+  void info(void);
+  void warning(void);
+  void error(void);
 
-	void debug(void);
-	void info(void);
-	void warning(void);
-	void error(void);
-
-	public:
-	Karen(void);
-	Karen(const Karen& src);
-	~Karen(void);
-	void complain(std::string level);
+ public:
+  Karen(void);
+  Karen(const Karen& src);
+  ~Karen(void);
+  void complain(std::string level);
 };
 
-#endif // KAREN_HPP
+#endif  // KAREN_HPP

@@ -12,9 +12,9 @@
 #include "Zombie.hpp"
 
 int main(void) {
-	Zombie* zombie = newZombie("yongjule");
-	Zombie zombie2("ghan");
-	randomChump("jiskim");
-	delete zombie;
-	return 0;
+  Zombie* zombie = newZombie("yongjule");
+  Zombie zombie2("ghan");
+  randomChump("jiskim");
+  delete zombie;
+  return 0;
 }

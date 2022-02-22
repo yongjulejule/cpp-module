@@ -11,23 +11,17 @@
 
 #include "Weapon.hpp"
 
-Weapon::Weapon(void) { }
+Weapon::Weapon(void) {}
 
-Weapon::Weapon(std::string type) : _type(type) { }
+Weapon::Weapon(std::string type) : _type(type) {}
 
-Weapon::~Weapon(void) {
-	std::cout << _type << " is destroyed." << std::endl;
-}
+Weapon::~Weapon(void) { std::cout << _type << " is destroyed." << std::endl; }
 
-std::string Weapon::getType(void) const {
-	return _type;
-}
+std::string Weapon::getType(void) const { return _type; }
 
-void Weapon::setType(std::string type) {
-	_type = type;
-}
+void Weapon::setType(std::string type) { _type = type; }
 
 Weapon& Weapon::operator=(const Weapon& src) {
-	_type = src._type;
-	return *this;
+  _type = src._type;
+  return *this;
 }

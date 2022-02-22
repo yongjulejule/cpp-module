@@ -13,13 +13,13 @@
 #include <string>
 
 int main(void) {
-	std::string str = "HI THIS IS BRAIN";
-	std::string* pstr = &str;
-	std::string& rstr = str;
+  std::string str = "HI THIS IS BRAIN";
+  std::string* pstr = &str;
+  std::string& rstr = str;
 
-	std::cout << "address of str: " << &str << std::endl;
-	std::cout << "address of str by stringPTR: " << pstr << std::endl;
-	std::cout << "address of str by stringREF: " << &rstr << std::endl;
+  std::cout << "address of str: " << &str << std::endl;
+  std::cout << "address of str by stringPTR: " << pstr << std::endl;
+  std::cout << "address of str by stringREF: " << &rstr << std::endl;
 
-	std::cout << "display str by stringPTR: " << *pstr << std::endl;
+  std::cout << "display str by stringPTR: " << *pstr << std::endl;
 }

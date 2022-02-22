@@ -11,16 +11,12 @@
 
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name) : _name(name) { }
+HumanB::HumanB(std::string name) : _name(name) {}
 
 void HumanB::attack(void) const {
-	std::cout << _name << " accacks with his " << _weapon.getType() << std::endl;
+  std::cout << _name << " accacks with his " << _weapon.getType() << std::endl;
 }
 
-void HumanB::setWeapon(Weapon& weapon) {
-	_weapon = weapon;
-}
+void HumanB::setWeapon(Weapon& weapon) { _weapon = weapon; }
 
-HumanB::~HumanB(void) {
-	std::cout << _name << " gonna die haha " << std::endl;
-}
+HumanB::~HumanB(void) { std::cout << _name << " gonna die haha " << std::endl; }

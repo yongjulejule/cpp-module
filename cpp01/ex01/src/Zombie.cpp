@@ -11,18 +11,16 @@
 
 #include "Zombie.hpp"
 
-Zombie::Zombie(void) {
-	std::cout << "Zombie born!" << std::endl;
-}
+Zombie::Zombie(void) { std::cout << "Zombie born!" << std::endl; }
 
 Zombie::~Zombie(void) {
-	std::cout << "Zombie " << "<" << _name << ">" << " dead..." << std::endl;
+  std::cout << "Zombie "
+            << "<" << _name << ">"
+            << " dead..." << std::endl;
 }
 
 void Zombie::announce(void) {
-	std::cout << "<" << _name << "> BraiiiiiiinnnzzzZ..." << std::endl;
+  std::cout << "<" << _name << "> BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-void Zombie::setName(std::string name) {
-	_name = name;
-}
+void Zombie::setName(std::string name) { _name = name; }

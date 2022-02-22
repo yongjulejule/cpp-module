@@ -10,13 +10,14 @@
  */
 
 #ifndef REPLACE_HPP
-# define  REPLACE_HPP
+#define REPLACE_HPP
 
-# include <iostream>
-# include <string>
+#include <iostream>
+#include <string>
 
 const std::string readFileIntoString(const std::string& filePath);
-const std::string replaceContent(const std::string& from, const std::string& to, const std::string& content);
-void	saveToNewFile(const std::string& filePath, const std::string& newContent);
+const std::string replaceContent(const std::string& from, const std::string& to,
+                                 const std::string& content);
+void saveToNewFile(const std::string& filePath, const std::string& newContent);
 
-#endif // REPLACE_HPP
+#endif  // REPLACE_HPP
