@@ -17,7 +17,9 @@ int main(void) {
   Fixed a;
   Fixed const b(10);
 
+  std::cout << "a is " << a << std::endl;
   a = Fixed(1234.4321f);
+  std::cout << "a = Fixed(1234.4321f) : " << a << std::endl;
 
   std::cout << "=========== Here is example in to Test ===========\n\n";
   std::cout << "a is " << a << std::endl;
