@@ -56,7 +56,7 @@ void ClapTrap::takeDamage(unsigned int amount) {
 
 void ClapTrap::beRepared(unsigned int amount) {
   if (this->_hitPoints == 0) {
-    std::cout << "Nice try but ClapTrap <" << this->_name
+    std::cout << "Repare? Nice try but ClapTrap <" << this->_name
               << "> already DEAD ⚰️ HAHA\n";
     return;
   }
