@@ -32,6 +32,6 @@ int main(int argc, char **argv) {
   first.attack(sec.getName());
   sec.takeDamage(first.getAttackDamage());
   first.guardGate();
-  sec.beRepared(100);
+  sec.beRepaird(100);
   return EXIT_SUCCESS;
 }

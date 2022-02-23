@@ -27,5 +27,5 @@ int main(int argc, char **argv) {
   robot2.takeDamage(robot1.getAttackDamage());
   robot2.takeDamage(robot1.getAttackDamage());
   robot2.takeDamage(robot1.getAttackDamage());
-  robot2.beRepared(100);
+  robot2.beRepaird(100);
 }

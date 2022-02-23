@@ -58,9 +58,9 @@ void ClapTrap::takeDamage(unsigned int amount) {
             << ">, Now has <" << this->_hitPoints << "> points of HP!\n";
 }
 
-void ClapTrap::beRepared(unsigned int amount) {
+void ClapTrap::beRepaird(unsigned int amount) {
   if (this->_hitPoints == 0) {
-    std::cout << "Repare? Nice try but ClapTrap <" << this->_name
+    std::cout << "Repair? Nice try but ClapTrap <" << this->_name
               << "> already DEAD ⚰️ HAHA\n";
     return;
   }
@@ -68,7 +68,7 @@ void ClapTrap::beRepared(unsigned int amount) {
     this->_hitPoints = ClapTrap::_maxHitPoints;
   else
     this->_hitPoints += amount;
-  std::cout << "ClapTrap <" << this->_name << "> be repared <" << amount
+  std::cout << "ClapTrap <" << this->_name << "> be Repaird <" << amount
             << ">, Now has <" << this->_hitPoints << "> points of HP!\n";
 }
 
