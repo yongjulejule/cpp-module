@@ -14,7 +14,7 @@
 #include <iostream>
 
 ClapTrap::ClapTrap(void)
-    : _name(""), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
+    : _name("noName"), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
   std::cout << "class ClapTrap : initialized without name\n";
 }
 
@@ -43,6 +43,10 @@ void ClapTrap::attack(std::string const& target) {
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
+  if (this->_hitPoints == 0) {
+    std::cout << "ClapTrap <" << this->_name << "> is already DEAD!☠️\n";
+    return;
+  }
   if (this->_hitPoints <= amount) {
     this->_hitPoints = 0;
     std::cout << "ClapTrap <" << this->_name << "> take damage <" << amount
@@ -60,7 +64,10 @@ void ClapTrap::beRepared(unsigned int amount) {
               << "> already DEAD ⚰️ HAHA\n";
     return;
   }
-  this->_hitPoints += amount;
+  if (this->_hitPoints + amount >= ClapTrap::_maxHitPoints)
+    this->_hitPoints = ClapTrap::_maxHitPoints;
+  else
+    this->_hitPoints += amount;
   std::cout << "ClapTrap <" << this->_name << "> be repared <" << amount
             << ">, Now has <" << this->_hitPoints << "> points of HP!\n";
 }

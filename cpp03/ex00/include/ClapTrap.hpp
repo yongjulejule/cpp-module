@@ -21,6 +21,9 @@ class ClapTrap {
   unsigned int _energyPoints;
   unsigned int _attackDamage;
 
+  const static unsigned int _maxHitPoints = 10;
+  const static unsigned int _maxEnergyPoints = 10;
+
  public:
   ClapTrap(void);
   ClapTrap(std::string name);
