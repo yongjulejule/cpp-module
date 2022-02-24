@@ -13,14 +13,25 @@
 
 #include <iostream>
 
-DiamondTrap::DiamondTrap(void) : ClapTrap() {
+DiamondTrap::DiamondTrap(void) : ClapTrap(), FragTrap(), ScavTrap() {
   std::cout << "class DiamondTrap : initialized without name\n";
+  this->_hitPoints = 100;
+  this->_maxHitPoints = 100;
+  this->_energyPoints = 50;
+  this->_maxEnergyPoints = 50;
+  this->_attackDamage = 30;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name") {
+DiamondTrap::DiamondTrap(std::string name)
+    : ClapTrap(name + "_clap_name"), FragTrap(), ScavTrap() {
   std::cout << "class DiamondTrap : initialized with name : " << name
             << std::endl;
   this->_name = name;
+  this->_hitPoints = 100;
+  this->_maxHitPoints = 100;
+  this->_energyPoints = 50;
+  this->_maxEnergyPoints = 50;
+  this->_attackDamage = 30;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& src) { *this = src; }

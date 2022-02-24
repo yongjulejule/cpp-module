@@ -102,6 +102,13 @@ unsigned int ClapTrap::getAttackDamage(void) const {
   return this->_attackDamage;
 }
 
+void ClapTrap::showStat(void) const {
+  std::cout << L_CYAN << this->_name << " [HP: " << this->_hitPoints << "/"
+            << this->_maxHitPoints << " EP: " << this->_energyPoints << "/"
+            << this->_maxEnergyPoints << " AD: " << this->_attackDamage << "]"
+            << RESET << std::endl;
+}
+
 ClapTrap::~ClapTrap(void) {
   std::cout << "class ClapTrap : " << _name << " is destructed\n";
 }

@@ -16,20 +16,20 @@
 ScavTrap::ScavTrap(void) : ClapTrap() {
   std::cout << "class ScavTrap : initialized without name\n";
   this->_hitPoints = 100;
-  this->_energyPoints = 50;
-  this->_attackDamage = 20;
   this->_maxHitPoints = 100;
+  this->_energyPoints = 50;
   this->_maxEnergyPoints = 50;
+  this->_attackDamage = 20;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
   std::cout << "class ScavTrap : initialized with name : " << name << std::endl;
   this->_name = name;
   this->_hitPoints = 100;
-  this->_energyPoints = 50;
-  this->_attackDamage = 20;
   this->_maxHitPoints = 100;
+  this->_energyPoints = 50;
   this->_maxEnergyPoints = 50;
+  this->_attackDamage = 20;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& src) {
