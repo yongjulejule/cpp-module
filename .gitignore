@@ -96,3 +96,6 @@ dkms.conf
 *.app
 
 # End of https://www.toptal.com/developers/gitignore/api/c++
+
+# OS X
+.DS_Store
