@@ -11,9 +11,17 @@
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(void) {}
+#include <iostream>
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name) {}
+DiamondTrap::DiamondTrap(void) : ClapTrap() {
+  std::cout << "class DiamondTrap : initialized without name\n";
+}
+
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name") {
+  std::cout << "class DiamondTrap : initialized with name : " << name
+            << std::endl;
+  this->_name = name;
+}
 
 DiamondTrap::DiamondTrap(const DiamondTrap& src) { *this = src; }
 
@@ -26,4 +34,13 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& src) {
   return *this;
 }
 
-DiamondTrap::~DiamondTrap(void) {}
+void DiamondTrap::whoAmI(void) {
+  std::cout << L_MAGENTA << "I am a diamond trap named " << this->_name
+            << " and a clap trap named " << ClapTrap::_name << RESET
+            << std::endl;
+}
+
+DiamondTrap::~DiamondTrap(void) {
+  std::cout << "class DiamondTrap : " << this->_name << " is destructed"
+            << std::endl;
+}

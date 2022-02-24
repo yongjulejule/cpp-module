@@ -15,15 +15,16 @@
 #include "ClapTrap.hpp"
 
 class ScavTrap : virtual public ClapTrap {
- private:
  public:
   ScavTrap(void);
   ScavTrap(std::string name);
   ScavTrap(const ScavTrap& src);
   ScavTrap& operator=(const ScavTrap& src);
-  ~ScavTrap(void);
 
+  void attack(std::string const& target);
   void guardGate(void);
+
+  virtual ~ScavTrap(void);
 };
 
 #endif  // SCAVTRAP_HPP

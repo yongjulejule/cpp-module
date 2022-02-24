@@ -11,33 +11,32 @@
 
 #include <iostream>
 
-#include "FragTrap.hpp"
-#include "ScavTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main(int argc, char **argv) {
-  if (argc != 3) {
+  if (argc != 4) {
     std::cout << "give me 2 arguments which name of Traps\n";
     return EXIT_FAILURE;
   }
+  ClapTrap *test1 = new ClapTrap("testClap");
+  ClapTrap *test2 = new DiamondTrap("testDia");
   ScavTrap first(argv[1]);
   FragTrap sec(argv[2]);
+  DiamondTrap third(argv[3]);
 
+  test1->attack(first.getName());
+  test2->attack(first.getName());
+  delete test2;
+  delete test1;
+
+  third.attack(first.getName());
+  third.whoAmI();
+  first.takeDamage(first.getAttackDamage());
   first.attack(sec.getName());
   sec.takeDamage(first.getAttackDamage());
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
+  for (int i = 0; i < 10; i++) {
+    sec.highFivesGuys();
+  }
   first.attack(sec.getName());
   sec.takeDamage(first.getAttackDamage());
   first.attack(sec.getName());

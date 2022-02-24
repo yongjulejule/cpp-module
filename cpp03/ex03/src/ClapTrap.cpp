@@ -103,5 +103,5 @@ unsigned int ClapTrap::getAttackDamage(void) const {
 }
 
 ClapTrap::~ClapTrap(void) {
-  std::cout << "class ClapTrap : destructor called\n";
+  std::cout << "class ClapTrap : " << _name << " is destructed\n";
 }

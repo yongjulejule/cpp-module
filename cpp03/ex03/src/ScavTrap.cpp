@@ -52,6 +52,12 @@ void ScavTrap::guardGate(void) {
             << RESET;
 }
 
+void ScavTrap::attack(std::string const& target) {
+  std::cout << L_RED << "ScavTrap <" << this->_name << "> attack <" << target
+            << ">, causing <" << this->_attackDamage << "> points of damage!\n"
+            << RESET;
+}
+
 ScavTrap::~ScavTrap(void) {
   std::cout << "class ScavTrap : " << this->_name << " is destructed"
             << std::endl;
