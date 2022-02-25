@@ -8,7 +8,7 @@ else
 	CXXFLAGS	= --std=c++98 -Wall -Wextra -Werror
 endif
 
-NAME			=  #Name of program
+NAME			=  virtualAnimal #Name of program
 
 INC_DIR		= ./include/
 
@@ -16,6 +16,10 @@ SRCS_DIR	= ./src/
 
 SRCS			= $(addprefix $(SRCS_DIR), \
 				  main.cpp \
+					Animal.cpp \
+					Brain.cpp \
+					Cat.cpp \
+					Dog.cpp \
 				)
 
 
