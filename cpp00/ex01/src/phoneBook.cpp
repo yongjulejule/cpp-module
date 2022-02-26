@@ -1,40 +1,18 @@
 /**
  * @file phoneBook.cpp
- * @author yongjule
+ * @author yongjule (lyjshow200@gmail.com)
+ * @brief class phoneBook implementation
+ * @version 0.1
  * @date 2022-02-13
+ *
+ * @copyright Copyright (c) 2022
+ *
  */
 
 #include "phoneBook.hpp"
 
 #include <iomanip>
-
-#include "getLineFromStdin.hpp"
-
-inline void Contact::setFirstName(std::string firstName) {
-  _firstName = firstName;
-}
-
-inline void Contact::setLastName(std::string lastName) { _lastName = lastName; }
-
-inline void Contact::setNickname(std::string nickname) { _nickname = nickname; }
-
-inline void Contact::setPhoneNumber(std::string phoneNumber) {
-  _phoneNumber = phoneNumber;
-}
-
-inline void Contact::setDarkestSecret(std::string darkestSecret) {
-  _darkestSecret = darkestSecret;
-}
-
-inline std::string Contact::getFirstName(void) { return _firstName; }
-
-inline std::string Contact::getLastName(void) { return _lastName; }
-
-inline std::string Contact::getNickname(void) { return _nickname; }
-
-inline std::string Contact::getPhoneNumber(void) { return _phoneNumber; }
-
-inline std::string Contact::getDarkestSecret(void) { return _darkestSecret; }
+#include <iostream>
 
 PhoneBook::PhoneBook(void) { _idx = 0; }
 
@@ -121,5 +99,14 @@ bool PhoneBook::updateContact() {
 
   _contact[_idx % MAX_CONTACTS] = contact;
   _idx += 1;
+  return true;
+}
+
+bool getLineFromStdin(std::string& line) {
+  static std::istream& is = std::cin;
+  std::getline(is, line);
+  if (is.rdstate() != std::ios::goodbit) {
+    return false;
+  }
   return true;
 }

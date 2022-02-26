@@ -6,11 +6,9 @@
 
 #include "Account.hpp"
 
-#include <algorithm>
-#include <functional>
+#include <time.h>
+
 #include <iostream>
-#include <string>
-#include <vector>
 
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
@@ -96,4 +94,21 @@ void Account::displayStatus(void) const {
             << std::endl;
 }
 
-void Account::_displayTimestamp(void) { std::cout << "[19920104_091532] "; }
+std::string getCurTimestamp() {
+  time_t t = time(NULL);
+  if (t == -1) {
+    return "TIMESTAMP_ERROR";
+  }
+  struct tm* tm = localtime(&t);
+  if (!tm) {
+    return "TIMESTAMP_ERROR";
+  }
+  char buf[16];
+  strftime(buf, sizeof(buf), "%Y%m%d_%H%M%S", tm);
+  return buf;
+}
+
+void Account::_displayTimestamp(void) {
+  std::string cur = getCurTimestamp();
+  std::cout << "[" << cur << "] ";
+}

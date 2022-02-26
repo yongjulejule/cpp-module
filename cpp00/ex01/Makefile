@@ -17,7 +17,7 @@ SRCS_DIR	= ./src/
 SRCS			= $(addprefix $(SRCS_DIR), \
 							main.cpp\
 							phoneBook.cpp \
-							getLineFromStdin.cpp\
+							Contact.cpp \
 				)
 
 
@@ -35,6 +35,7 @@ L_RED="\033[1;31m"
 RESET="\033[0m"
 BOLD="\033[1m"
 L_PUPLE="\033[1;35m"
+L_CYAN="\033[1;96m"
 UP = "\033[A"
 CUT = "\033[K"
 

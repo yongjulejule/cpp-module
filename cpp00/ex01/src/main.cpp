@@ -4,7 +4,8 @@
  * @date 2022-02-13
  */
 
-#include "getLineFromStdin.hpp"
+#include <iostream>
+
 #include "phoneBook.hpp"
 
 int main(void) {
@@ -13,7 +14,8 @@ int main(void) {
   std::string commend;
 
   do {
-    std::cout << "Please Enter Commends: ADD, SEARCH, EXIT\n";
+    std::cout << "Please Enter Commends: ADD, SEARCH, EXIT\n"
+              << "$>";
     if (!getLineFromStdin(commend)) break;
     if (commend == "ADD") {
       phoneBook.updateContact();
@@ -26,9 +28,6 @@ int main(void) {
     }
   } while (std::cin.rdstate() == (std::ios::goodbit));
 
-  if (std::cin.rdstate() != (std::ios::goodbit | std::ios::eofbit))
-    std::cout << std::endl;
   std::cout << "Goodbye!" << std::endl;
-
   return 0;
 }

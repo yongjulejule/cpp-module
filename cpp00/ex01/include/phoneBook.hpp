@@ -1,49 +1,26 @@
 /**
  * @file phoneBook.hpp
- * @author yongjule
- * @date 2022-02-16
+ * @author yongjule (lyjshow200@gmail.com)
+ * @brief Phonebook class declaration
+ * @version 0.1
+ * @date 2022-02-13
+ *
+ * @copyright Copyright (c) 2022
+ *
  */
 
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 
-#include <iostream>
 #include <string>
+
+#include "Contact.hpp"
 
 #define MAX_CONTACTS 8
 
-/**
- * @class Contact
- * @brief Contact class
- */
-class Contact {
- private:
-  std::string _firstName;
-  std::string _lastName;
-  std::string _nickname;
-  std::string _phoneNumber;
-  std::string _darkestSecret;
-
- public:
-  void setFirstName(std::string firstName);
-  void setLastName(std::string lastName);
-  void setNickname(std::string nickname);
-  void setPhoneNumber(std::string phoneNumber);
-  void setDarkestSecret(std::string darkestSecret);
-  std::string getFirstName(void);
-  std::string getLastName(void);
-  std::string getNickname(void);
-  std::string getPhoneNumber(void);
-  std::string getDarkestSecret(void);
-};
-
-/**
- * @class PhoneBook
- * @brief PhoneBook class
- */
 class PhoneBook {
  private:
-  Contact _contact[8];
+  Contact _contact[MAX_CONTACTS];
   int _idx;
 
  public:
@@ -53,5 +30,7 @@ class PhoneBook {
   bool updateContact(void);
   bool printPhoneBook(void);
 };
+
+bool getLineFromStdin(std::string& line);
 
 #endif  // PHONEBOOK_HPP
