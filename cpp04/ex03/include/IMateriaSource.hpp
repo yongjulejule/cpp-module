@@ -14,7 +14,7 @@
 
 #include <string>
 
-class AMateria;
+#include "AMateria.hpp"
 
 class IMateriaSource {
  public:

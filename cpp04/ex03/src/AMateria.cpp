@@ -20,7 +20,11 @@ AMateria::AMateria(std::string const& type) : _type(type) {
 
 std::string const& AMateria::getType(void) const { return this->_type; }
 
-void AMateria::use(ICharacter& target) {}
+void AMateria::use(ICharacter& target) {
+  ICharacter* tmp = &target;
+  std::cout << "Abstract Materia class use method called with target : "
+            << tmp->getName() << std::endl;
+}
 
 AMateria::~AMateria(void) {
   std::cout << "Abstract Materia class destructor called which type is "

@@ -5,7 +5,8 @@
       "label": "Use Makefile",
       "command": "make",
       "args": [
-				"debug"
+				"debug",
+				"-B",
       ],
       "options": {
         "cwd": "${workspaceFolder}/${input:dirname}"

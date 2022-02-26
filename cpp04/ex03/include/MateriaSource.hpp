@@ -14,6 +14,19 @@
 
 #include "IMateriaSource.hpp"
 
-class MateriaSource : public IMateriaSource {};
+#define NUMBER_OF_MATERIAS 2
+
+class MateriaSource : public IMateriaSource {
+ private:
+  AMateria **_materias;
+
+ public:
+  MateriaSource(void);
+  MateriaSource(MateriaSource const &src);
+  ~MateriaSource(void);
+  MateriaSource const &operator=(MateriaSource const &src);
+  void learnMateria(AMateria *materia);
+  AMateria *createMateria(std::string const &type);
+};
 
 #endif  // MATERIASOURCE_HPP

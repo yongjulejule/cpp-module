@@ -10,8 +10,12 @@
  */
 
 #include "AMateria.hpp"
+#include "Character.hpp"
+#include "Cure.hpp"
 #include "ICharacter.hpp"
 #include "IMateriaSource.hpp"
+#include "Ice.hpp"
+#include "MateriaSource.hpp"
 
 int main(void) {
   IMateriaSource* src = new MateriaSource();
@@ -30,5 +34,7 @@ int main(void) {
   delete bob;
   delete me;
   delete src;
+  while (true)
+    ;
   return 0;
 }

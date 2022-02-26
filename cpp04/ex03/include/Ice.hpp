@@ -8,3 +8,21 @@
  * @copyright Copyright (c) 2022
  *
  */
+
+#ifndef ICE_HPP
+#define ICE_HPP
+
+#include "AMateria.hpp"
+
+class Ice : public AMateria {
+ public:
+  Ice(void);
+  Ice(Ice const &);
+  Ice const &operator=(Ice const &);
+
+  AMateria *clone(void) const;
+  void use(ICharacter &target);
+  ~Ice(void);
+};
+
+#endif  // ICE_HPP

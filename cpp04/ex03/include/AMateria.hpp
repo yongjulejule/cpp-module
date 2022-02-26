@@ -14,6 +14,8 @@
 
 #include <string>
 
+#include "ICharacter.hpp"
+
 class ICharacter;
 
 class AMateria {
@@ -27,7 +29,7 @@ class AMateria {
   virtual AMateria* clone(void) const = 0;
   virtual void use(ICharacter& target);
 
-  ~AMateria(void);
+  virtual ~AMateria(void);
 };
 
 #endif  // AMATERIA_HPP
