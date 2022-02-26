@@ -38,7 +38,8 @@ MateriaSource const& MateriaSource::operator=(MateriaSource const& src) {
 }
 
 void MateriaSource::learnMateria(AMateria* materia) {
-  std::cout << "MateriaSource::learnMateria(AMateria* materia)\n";
+  std::cout << "MateriaSource::learnMateria(AMateria* materia) type : "
+            << materia->getType() << "\n";
   for (int i = 0; i < NUMBER_OF_MATERIAS; i++) {
     if (this->_materias[i] == nullptr) {
       this->_materias[i] = materia;
@@ -48,7 +49,8 @@ void MateriaSource::learnMateria(AMateria* materia) {
 }
 
 AMateria* MateriaSource::createMateria(std::string const& type) {
-  std::cout << "MateriaSource::createMateria(std::string const& type)\n";
+  std::cout << "MateriaSource::createMateria(std::string const& type) type : "
+            << type << "\n";
   for (int i = 0; i < NUMBER_OF_MATERIAS; i++) {
     if (this->_materias[i] != nullptr) {
       if (type == this->_materias[i]->getType())

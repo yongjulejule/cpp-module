@@ -30,11 +30,10 @@ int main(void) {
   ICharacter* bob = new Character("bob");
   me->use(0, *bob);
   me->use(1, *bob);
+  bob->use(0, *me);
 
   delete bob;
   delete me;
   delete src;
-  while (true)
-    ;
   return 0;
 }

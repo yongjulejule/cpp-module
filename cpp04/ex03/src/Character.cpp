@@ -51,7 +51,8 @@ Character const &Character::operator=(Character const &src) {
 std::string const &Character::getName(void) const { return this->_name; }
 
 void Character::equip(AMateria *materia) {
-  std::cout << "Character::equip(AMateria *materia)\n";
+  std::cout << "Character::equip(AMateria *materia) type : "
+            << materia->getType() << "\n";
   for (int i = 0; i < NUMBER_OF_SLOTS; i++) {
     if (this->_slot[i] == nullptr) {
       this->_slot[i] = materia;
@@ -69,7 +70,8 @@ void Character::unequip(int idx) {
 }
 
 void Character::use(int idx, ICharacter &target) {
-  std::cout << "Character::use(int idx, ICharacter& target)\n";
+  std::cout << "Character::use(int idx, ICharacter& target) idx, target : "
+            << idx << ", " << target.getName() << "\n";
   if (idx >= 0 && idx < NUMBER_OF_SLOTS) {
     if (this->_slot[idx] != nullptr) this->_slot[idx]->use(target);
   }
