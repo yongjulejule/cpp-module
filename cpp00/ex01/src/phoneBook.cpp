@@ -29,7 +29,7 @@ static void printTableRow(void) {
 
 static std::string getPrintableString(std::string str) {
   if (str.length() >= 10) {
-    str = str.substr(0, 8);
+    str = str.substr(0, 9);
     str += ".";
   }
   return str;
