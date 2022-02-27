@@ -27,10 +27,8 @@ class PhoneBook {
   PhoneBook(void);
   ~PhoneBook(void);
 
-  bool updateContact(void);
-  bool printPhoneBook(void);
+  void updateContact(const Contact &contact);
+  void printPhoneBook(void);
 };
-
-bool getLineFromStdin(std::string& line);
 
 #endif  // PHONEBOOK_HPP

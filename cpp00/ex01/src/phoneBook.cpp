@@ -43,7 +43,7 @@ static void printTableRow(int idx, Contact contact) {
             << '|' << std::endl;
 }
 
-bool PhoneBook::printPhoneBook() {
+void PhoneBook::printPhoneBook() {
   int max = (_idx < MAX_CONTACTS) ? _idx : MAX_CONTACTS;
 
   printTableRow();
@@ -53,11 +53,11 @@ bool PhoneBook::printPhoneBook() {
 
   std::cout << "Enter index to search contact: ";
   std::string commend;
-  if (!getLineFromStdin(commend)) return false;
-  if (commend.size() > 1 || (commend.at(0) < '1' || commend.at(0) > '8')) {
+  std::getline(std::cin, commend);
+  if (commend.size() > 1 || (commend[0] < '1' || commend[0] > '8')) {
     std::cout << "Invalid index." << std::endl;
   } else {
-    int idx = commend.at(0) - '0' - 1;
+    int idx = commend[0] - '0' - 1;
     if (idx >= max) {
       std::cout << "Invalid index." << std::endl;
     } else {
@@ -70,43 +70,12 @@ bool PhoneBook::printPhoneBook() {
                 << std::endl;
     }
   }
-  return true;
 }
 
-bool PhoneBook::updateContact() {
-  Contact contact;
-
-  std::cout << "First Name: ";
-  std::string firstName;
-  if (!getLineFromStdin(firstName)) return false;
-  contact.setFirstName(firstName);
-  std::cout << "Last Name: ";
-  std::string lastName;
-  if (!getLineFromStdin(lastName)) return false;
-  contact.setLastName(lastName);
-  std::cout << "Nickname: ";
-  std::string nickname;
-  if (!getLineFromStdin(nickname)) return false;
-  contact.setNickname(nickname);
-  std::cout << "Phone Number: ";
-  std::string phoneNumber;
-  if (!getLineFromStdin(phoneNumber)) return false;
-  contact.setPhoneNumber(phoneNumber);
-  std::cout << "Darkest Secret: ";
-  std::string darkestSecret;
-  if (!getLineFromStdin(darkestSecret)) return false;
-  contact.setDarkestSecret(darkestSecret);
-
+void PhoneBook::updateContact(const Contact& contact) {
   _contact[_idx % MAX_CONTACTS] = contact;
   _idx += 1;
-  return true;
-}
-
-bool getLineFromStdin(std::string& line) {
-  static std::istream& is = std::cin;
-  std::getline(is, line);
-  if (is.rdstate() != std::ios::goodbit) {
-    return false;
+  if (_idx >= MAX_CONTACTS * 2) {
+    _idx -= MAX_CONTACTS;
   }
-  return true;
 }
