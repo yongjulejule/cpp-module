@@ -1,7 +1,7 @@
 /**
  * @file HumanB.hpp
  * @author yongjule (lyjshow200@gmail.com)
- * @brief class HumanB
+ * @brief HumanB class declaration
  * @version 0.1
  * @date 2022-02-18
  *

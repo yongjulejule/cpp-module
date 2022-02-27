@@ -19,17 +19,25 @@ Karen::Karen(const Karen& src) { *this = src; }
 
 Karen::~Karen(void) {}
 
-void Karen::debug(void) { std::cout << "[ DEBUG ]" << std::endl; }
+void Karen::debug(void) {
+  std::cout << "[ DEBUG ] DEBUG makes me tired... somebody help me\n";
+}
 
-void Karen::info(void) { std::cout << "[ INFO ]" << std::endl; }
+void Karen::info(void) {
+  std::cout << "[ INFO ] Useful Infomation haha Isn't it?\n";
+}
 
-void Karen::warning(void) { std::cout << "[ WARNING ]" << std::endl; }
+void Karen::warning(void) {
+  std::cout << "[ WARNING ] Oh Its Warning!! If u wanna see your program gonna "
+               "bomb, Just ignore it!\n";
+}
 
-void Karen::error(void) { std::cout << "[ ERROR ]" << std::endl; }
+void Karen::error(void) {
+  std::cout << "[ ERROR ] HAHA YOUR PROGRAM IS TRASH\n";
+}
 
 void Karen::complain(std::string level) {
   std::string levelList[4] = {"debug", "info", "warning", "error"};
-  // 왜 이렇게 해야함...??????????? 어렵다...
   void (Karen::*logger[4])(void) = {&Karen::debug, &Karen::info,
                                     &Karen::warning, &Karen::error};
   for (int i = 0; i < 4; i++) {

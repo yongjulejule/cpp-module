@@ -1,7 +1,7 @@
 /**
  * @file Weapon.hpp
  * @author yongjule (lyjshow200@gmail.com)
- * @brief Weapon class
+ * @brief Weapon class declaration
  * @version 0.1
  * @date 2022-02-18
  *

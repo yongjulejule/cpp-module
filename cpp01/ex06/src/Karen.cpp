@@ -19,13 +19,22 @@ Karen::Karen(const Karen& src) { *this = src; }
 
 Karen::~Karen(void) {}
 
-void Karen::debug(void) { std::cout << "[ DEBUG ]" << std::endl; }
+void Karen::debug(void) {
+  std::cout << "[ DEBUG ] DEBUG makes me tired... somebody help me\n";
+}
 
-void Karen::info(void) { std::cout << "[ INFO ]" << std::endl; }
+void Karen::info(void) {
+  std::cout << "[ INFO ] Useful Infomation haha Isn't it?\n";
+}
 
-void Karen::warning(void) { std::cout << "[ WARNING ]" << std::endl; }
+void Karen::warning(void) {
+  std::cout << "[ WARNING ] Oh Its Warning!! If u wanna see your program gonna "
+               "bomb, Just ignore it!\n";
+}
 
-void Karen::error(void) { std::cout << "[ ERROR ]" << std::endl; }
+void Karen::error(void) {
+  std::cout << "[ ERROR ] HAHA YOUR PROGRAM IS TRASH\n";
+}
 
 void Karen::complain(std::string level) {
   int levelFlag = 0;
@@ -36,13 +45,13 @@ void Karen::complain(std::string level) {
   }
   switch (levelFlag) {
     case DEBUG:
-      debug();
+      this->debug();
     case INFO:
-      info();
+      this->info();
     case WARNING:
-      warning();
+      this->warning();
     case ERROR: {
-      error();
+      this->error();
       break;
     }
     default: {

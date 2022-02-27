@@ -1,7 +1,7 @@
 /**
  * @file Karen.hpp
  * @author yongjule (lyjshow200@gmail.com)
- * @brief
+ * @brief Karen class declaration
  * @version 0.1
  * @date 2022-02-20
  *

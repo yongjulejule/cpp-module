@@ -15,12 +15,12 @@ Zombie::Zombie(void) { std::cout << "Zombie born!" << std::endl; }
 
 Zombie::~Zombie(void) {
   std::cout << "Zombie "
-            << "<" << _name << ">"
+            << "<" << this->_name << ">"
             << " dead..." << std::endl;
 }
 
 void Zombie::announce(void) {
-  std::cout << "<" << _name << "> BraiiiiiiinnnzzzZ..." << std::endl;
+  std::cout << "<" << this->_name << "> BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-void Zombie::setName(std::string name) { _name = name; }
+void Zombie::setName(std::string name) { this->_name = name; }

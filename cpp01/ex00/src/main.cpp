@@ -16,5 +16,5 @@ int main(void) {
   Zombie zombie2("ghan");
   randomChump("jiskim");
   delete zombie;
-  return 0;
+  return EXIT_SUCCESS;
 }
