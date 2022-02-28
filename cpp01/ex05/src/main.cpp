@@ -13,9 +13,17 @@
 
 int main(void) {
   Karen karen;
-  karen.complain("debug");
-  karen.complain("info");
-  karen.complain("warning");
-  karen.complain("error");
-  return 0;
+
+  karen.complain("DEBUG");
+  karen.complain("INFO");
+  karen.complain("WARNING");
+  karen.complain("WARNING");
+  karen.complain("WARNING");
+  karen.complain("WARNING");
+  karen.complain("ERROR");
+  karen.complain("ERROR");
+  karen.complain("ERROR");
+  karen.complain("ERROR");
+
+  return EXIT_SUCCESS;
 }

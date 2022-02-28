@@ -18,8 +18,14 @@ int main(int argc, char** argv) {
   } else if (!*argv[1] || !*argv[2] || !*argv[3]) {
     std::cout << "Error : Arguments cannot be empty\n";
   }
-  const std::string content = readFileIntoString(argv[1]);
-  const std::string newContent = replaceContent(argv[2], argv[3], content);
-  saveToNewFile(argv[1], newContent);
-  return EXIT_SUCCESS;
+
+  try {
+    const std::string content = readFileIntoString(argv[1]);
+    const std::string newContent = replaceContent(argv[2], argv[3], content);
+    saveToNewFile(argv[1], newContent);
+    return EXIT_SUCCESS;
+  } catch (...) {
+    std::cout << "replace : EXIT_FAILURE\n";
+    return EXIT_FAILURE;
+  }
 }

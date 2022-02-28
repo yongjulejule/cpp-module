@@ -12,7 +12,10 @@
 #include "HumanA.hpp"
 
 HumanA::HumanA(std::string name, Weapon& weapon)
-    : _name(name), _weapon(weapon) {}
+    : _name(name), _weapon(weapon) {
+  std::cout << "HumanA [" << this->_name << "] constructed with weapon ["
+            << this->_weapon.getType() << "]\n";
+}
 
 void HumanA::attack(void) const {
   std::cout << this->_name << " attacks with his " << this->_weapon.getType()
@@ -20,5 +23,5 @@ void HumanA::attack(void) const {
 }
 
 HumanA::~HumanA(void) {
-  std::cout << this->_name << " gonna die haha " << std::endl;
+  std::cout << "[" << this->_name << "] gonna die haha\n";
 }

@@ -15,29 +15,28 @@
 
 Karen::Karen(void) {}
 
-Karen::Karen(const Karen& src) { *this = src; }
-
 Karen::~Karen(void) {}
 
 void Karen::debug(void) {
-  std::cout << "[ DEBUG ] DEBUG makes me tired... somebody help me\n";
+  std::cout << "[ DEBUG ]\nDEBUG makes me tired... somebody help me\n\n";
 }
 
 void Karen::info(void) {
-  std::cout << "[ INFO ] Useful Infomation haha Isn't it?\n";
+  std::cout << "[ INFO ]\nUseful Infomation haha Isn't it?\n\n";
 }
 
 void Karen::warning(void) {
-  std::cout << "[ WARNING ] Oh Its Warning!! If u wanna see your program gonna "
-               "bomb, Just ignore it!\n";
+  std::cout
+      << "[ WARNING ]\nOh Its Warning!! If u wanna see your program gonna "
+         "crash, Just ignore it!\n\n";
 }
 
 void Karen::error(void) {
-  std::cout << "[ ERROR ] HAHA YOUR PROGRAM IS TRASH\n";
+  std::cout << "[ ERROR ]\nHAHA YOUR PROGRAM IS TRASH\n\n";
 }
 
 void Karen::complain(std::string level) {
-  std::string levelList[4] = {"debug", "info", "warning", "error"};
+  std::string levelList[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
   void (Karen::*logger[4])(void) = {&Karen::debug, &Karen::info,
                                     &Karen::warning, &Karen::error};
   for (int i = 0; i < 4; i++) {

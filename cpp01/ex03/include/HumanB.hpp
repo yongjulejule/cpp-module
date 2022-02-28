@@ -17,14 +17,15 @@
 class HumanB {
  private:
   std::string _name;
-  Weapon _weapon;
+  Weapon* _weapon;
 
  public:
   HumanB(std::string name);
-  HumanB(const HumanB& src);
-  ~HumanB(void);
+
   void attack(void) const;
   void setWeapon(Weapon& weapon);
+
+  ~HumanB(void);
 };
 
 #endif  // HUMANB_HPP

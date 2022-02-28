@@ -1,7 +1,7 @@
 /**
  * @file Zombie.hpp
  * @author yongjule (lyjshow200@gmail.com)
- * @brief Zombie class header file
+ * @brief Zombie class declaration
  * @version 0.1
  * @date 2022-02-18
  *

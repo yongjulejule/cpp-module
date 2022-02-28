@@ -13,15 +13,20 @@
 
 #include "Karen.hpp"
 
-int main(void) {
+int main(int argc, char **argv) {
+  if (argc != 2) {
+    std::cout << "Only One Argument needed\n";
+    return EXIT_FAILURE;
+  }
+
   Karen karen;
-  std::cout << "======== debug =========" << std::endl;
-  karen.complain("debug");
-  std::cout << "======== info =========" << std::endl;
-  karen.complain("info");
-  std::cout << "======== warning =========" << std::endl;
-  karen.complain("warning");
-  std::cout << "======== error =========" << std::endl;
-  karen.complain("error");
+  std::string level = argv[1];
+  const size_t length = level.length();
+  for (size_t i = 0; i < length; i++) {
+    level[i] = toupper(level[i]);
+  }
+
+  karen.complain(argv[1]);
+
   return 0;
 }

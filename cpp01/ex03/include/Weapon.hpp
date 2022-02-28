@@ -22,11 +22,11 @@ class Weapon {
  public:
   Weapon(void);
   Weapon(std::string type);
-  Weapon(const Weapon& src);
-  ~Weapon(void);
-  Weapon& operator=(const Weapon& src);
+
   std::string getType(void) const;
   void setType(std::string type);
+
+  ~Weapon(void);
 };
 
 #endif  // WEAPON_HPP

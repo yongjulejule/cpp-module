@@ -21,9 +21,10 @@ class HumanA {
 
  public:
   HumanA(std::string name, Weapon& weapon);
-  HumanA(const HumanA& src);
-  ~HumanA(void);
+
   void attack(void) const;
+
+  ~HumanA(void);
 };
 
 #endif  // HUMANA_HPP

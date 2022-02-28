@@ -24,6 +24,6 @@ int main(void) {
   std::cout << "\n===============================\n\n";
 
   std::cout << "display str by string: " << str << std::endl;
-  std::cout << "display str by stringREF: " << rstr << std::endl;
   std::cout << "display str by stringPTR: " << *pstr << std::endl;
+  std::cout << "display str by stringREF: " << rstr << std::endl;
 }

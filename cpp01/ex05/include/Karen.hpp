@@ -23,9 +23,10 @@ class Karen {
 
  public:
   Karen(void);
-  Karen(const Karen& src);
-  ~Karen(void);
+
   void complain(std::string level);
+
+  ~Karen(void);
 };
 
 #endif  // KAREN_HPP

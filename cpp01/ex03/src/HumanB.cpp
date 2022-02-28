@@ -11,19 +11,21 @@
 
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name) : _name(name) {}
+HumanB::HumanB(std::string name) : _name(name), _weapon(NULL) {
+  std::cout << "HumanB [" << this->_name << "] constructed\n";
+}
 
 void HumanB::attack(void) const {
-  if (this->_weapon.getType() == "") {
+  if (!this->_weapon) {
     std::cout << this->_name << " attacks with hands" << std::endl;
   } else {
-    std::cout << this->_name << " accacks with his " << this->_weapon.getType()
+    std::cout << this->_name << " attacks with his " << this->_weapon->getType()
               << std::endl;
   }
 }
 
-void HumanB::setWeapon(Weapon& weapon) { this->_weapon = weapon; }
+void HumanB::setWeapon(Weapon& weapon) { this->_weapon = &weapon; }
 
 HumanB::~HumanB(void) {
-  std::cout << this->_name << " gonna die haha " << std::endl;
+  std::cout << "[" << this->_name << "] gonna die haha\n";
 }
