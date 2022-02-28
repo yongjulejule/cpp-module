@@ -8,7 +8,7 @@ else
 	CXXFLAGS	= --std=c++98 -Wall -Wextra -Werror
 endif
 
-NAME			=  #Name of program
+NAME			= Bureaucrat  #Name of program
 
 INC_DIR		= ./include/
 
