@@ -8,7 +8,7 @@ else
 	CXXFLAGS	= --std=c++98 -Wall -Wextra -Werror
 endif
 
-NAME			= Bureaucrat  #Name of program
+NAME			= Form  #Name of program
 
 INC_DIR		= ./include/
 
@@ -17,6 +17,7 @@ SRCS_DIR	= ./src/
 SRCS			= $(addprefix $(SRCS_DIR), \
 				  main.cpp \
 					Bureaucrat.cpp \
+					Form.cpp \
 				)
 
 

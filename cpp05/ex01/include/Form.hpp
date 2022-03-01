@@ -25,7 +25,7 @@ class Form {
   bool _isSigned;
 
  public:
-  Form(std::string name, int gradeReqToSign, int gradeReqToExec, bool isSigned);
+  Form(std::string name, int gradeReqToSign, int gradeReqToExec);
 
   class GradeTooHighException : public std::exception {
    public:
@@ -37,10 +37,10 @@ class Form {
     const char *what() const throw();
   };
 
-  const std::string getName(void) const;
-  const int getGradeReqToSign(void) const;
-  const int getGradeReqToExec(void) const;
-  const bool getIsSigned(void) const;
+  std::string getName(void) const;
+  int getGradeReqToSign(void) const;
+  int getGradeReqToExec(void) const;
+  bool getIsSigned(void) const;
 
   void beSigned(Bureaucrat const &bureaucrat);
 
