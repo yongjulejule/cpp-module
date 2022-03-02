@@ -11,6 +11,8 @@
 
 #include "Bureaucrat.hpp"
 
+#include "Form.hpp"
+
 Bureaucrat::Bureaucrat(void) {}
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
@@ -41,6 +43,17 @@ void Bureaucrat::decrementGrade(void) {
     this->_grade += 1;
   else
     throw Bureaucrat::GradeTooLowException();
+}
+
+void Bureaucrat::executeForm(Form const &form) {
+  try {
+    form.execute(*this);
+    std::cout << "<" << this->getName() << "> executes <" << form.getName()
+              << ">.\n";
+  } catch (std::exception &e) {
+    std::cout << "<" << this->getName() << "> cannot executes the form <"
+              << form.getName() << ">. Because " << e.what() << std::endl;
+  }
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw() {

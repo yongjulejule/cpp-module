@@ -1,7 +1,7 @@
 /**
  * @file ShrubberyCreationForm.hpp
  * @author yongjule (lyjshow200@gmail.com)
- * @brief ShrubberyCreationForm class derived Form Abstract class declaration
+ * @brief ShrubberyCreationForm class derived Abstract Form class declaration
  * @version 0.1
  * @date 2022-03-01
  *
@@ -14,6 +14,18 @@
 
 #include "Form.hpp"
 
+#define ASCII_TREE \
+  "\n\
+        %%%,%%%%%%%\n\
+         ,'%% \\\\-*%%%%%%%\n\
+   ;%%%%%*%   _%%%%\"\n\
+    ,%%%       \\(_.*%%%%.\n\
+    % *%%, ,%%%%*(    '\n\
+  %^     ,*%%% )\\|,%%*%,_\n\
+       *%    \\/ #).-\"*%%*\n\
+           _.) ,/ *%,\n\
+   _________/)#(_____________\n\
+"
 class ShrubberyCreationForm : public Form {
  private:
   std::string _target;
@@ -22,7 +34,7 @@ class ShrubberyCreationForm : public Form {
   ShrubberyCreationForm(std::string target);
   ShrubberyCreationForm(ShrubberyCreationForm const &src);
   ShrubberyCreationForm &operator=(ShrubberyCreationForm const &src);
-  void execute(Bureaucrat const &executor);
+  void execute(Bureaucrat const &executor) const;
   ~ShrubberyCreationForm(void);
 };
 

@@ -13,6 +13,8 @@
 
 #include <fstream>
 
+#include "Bureaucrat.hpp"
+
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
     : Form("ShrubberyCreationForm", 145, 137), _target(target) {
   std::cout << "ShrubberyCreationForm for <" << target << "> is contructed.\n";
@@ -27,16 +29,15 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(
   return *this;
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const &executor) {
-  this->beSigned(executor);
-  if (!this->getIsSigned()) {
-    std::cout << "Cannot execute ShrubberyCreationForm for <" << this->_target
-              << "> : ";
-    throw Form::GradeTooLowException();
-  }
+void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
+  if (executor.getGrade() > this->getGradeReqToExec())
+    throw Form::GradeTooHighException();
+  if (!this->getIsSigned()) throw Form::ExecWithoutSignException();
   std::ofstream out;
   out.exceptions(std::ios::badbit | std::ios::failbit);
-  out.open(this->_target + "_shrubbery", std::ios::out);
+  out.open(this->_target + "_shrubbery", std::ios::out | std::ios::trunc);
+  out << ASCII_TREE;
+  std::cout << L_CYAN "<" << this->_target << "> is executed!\n" RESET;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm(void) {
