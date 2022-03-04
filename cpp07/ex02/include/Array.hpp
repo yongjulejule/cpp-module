@@ -38,7 +38,7 @@ class Array {
   };
 
   T &operator[](const unsigned int idx) {
-    if (idx > this->_size) throw Array<T>::OutOfRangeException();
+    if (idx >= this->_size) throw Array<T>::OutOfRangeException();
     return this->_arr[idx];
   };
   unsigned int getSize(void) const { return this->_size; };

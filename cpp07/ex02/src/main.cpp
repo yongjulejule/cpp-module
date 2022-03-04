@@ -16,8 +16,20 @@
 
 void myTests(int argc, char** argv) {
   Array<int> arr(10);
+  for (int i = 0; i < 10; i++) arr[i] = 42;
   arr[0] = 10;
-  std::cout << arr[0] << std::endl;
+  {
+    try {
+      Array<int> test(20);
+      for (int i = 0; i < 20; i++)
+        std::cout << "test[" << i << "]: " << test[i] << std::endl;
+      test = arr;
+      for (int i = 0; i < 20; i++)
+        std::cout << "test[" << i << "]: " << test[i] << std::endl;
+    } catch (std::exception& e) {
+      std::cout << e.what() << std::endl;
+    }
+  }
   Array<std::string> args(argc);
   for (int i = 0; i < argc; i++) {
     args[i] = argv[i];
