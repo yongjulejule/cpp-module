@@ -9,6 +9,9 @@
 		"string": "cpp",
 		"unordered_map": "cpp",
 		"vector": "cpp",
-		"__config": "cpp"
+		"__config": "cpp",
+		"stack": "cpp",
+		"type_traits": "cpp",
+		"list": "cpp"
 	}
 }
