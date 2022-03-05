@@ -17,49 +17,12 @@
 template <typename T>
 class MutantStack : public std::stack<T> {
  public:
-  struct iterator {
-    typedef std::bidirectional_iterator_tag iterator_category;
-    typedef T value_type;
-    typedef T *pointer;
-    typedef T &reference;
-    typedef std::ptrdiff_t difference_type;
-
-   private:
-    pointer _it;
-
-   public:
-    iterator(void) : _it(NULL) {}
-    iterator(const iterator &rhs) : _it(rhs._it) {}
-    iterator &operator=(const iterator &rhs) {
-      this->_it = rhs._it;
-      return *this;
-    }
-    iterator &operator++(void) {
-      ++this->_it;
-      return *this;
-    }
-    iterator operator++(int) {
-      iterator tmp(*this);
-      ++(*this);
-      return tmp;
-    }
-    iterator &operator--(void) {
-      --this->_it;
-      return *this;
-    }
-    iterator operator--(int) {
-      iterator tmp(*this);
-      --(*this);
-      return tmp;
-    }
-    bool operator==(const iterator &rhs) const {
-      return (this->_it == rhs._it);
-    }
-    bool operator!=(const iterator &rhs) const { return !(*this == rhs); }
-    reference operator*(void) const { return (*this->_it); }
-    pointer operator->(void) const { return (this->_it); }
-    ~iterator(void){};
-  };
+  typedef typename std::stack<T>::container_type::iterator iterator;
+  typedef
+      typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
+  typedef typename std::stack<T>::container_type::const_iterator const_iterator;
+  typedef typename std::stack<T>::container_type::const_reverse_iterator
+      const_reverse_iterator;
 
   MutantStack(void);
   MutantStack(const MutantStack &rhs);
@@ -67,6 +30,12 @@ class MutantStack : public std::stack<T> {
 
   iterator begin(void);
   iterator end(void);
+  const const_iterator cbegin(void);
+  const const_iterator cend(void);
+  reverse_iterator rbegin(void);
+  reverse_iterator rend(void);
+  const const_reverse_iterator crbegin(void);
+  const const_reverse_iterator crend(void);
   ~MutantStack(void);
 };
 
@@ -92,6 +61,38 @@ typename MutantStack<T>::iterator MutantStack<T>::begin(void) {
 template <typename T>
 typename MutantStack<T>::iterator MutantStack<T>::end(void) {
   return this->c.end();
+}
+
+template <typename T>
+const typename MutantStack<T>::const_iterator MutantStack<T>::cbegin(void) {
+  return this->c.begin();
+}
+
+template <typename T>
+const typename MutantStack<T>::const_iterator MutantStack<T>::cend(void) {
+  return this->c.end();
+}
+
+template <typename T>
+typename MutantStack<T>::reverse_iterator MutantStack<T>::rbegin(void) {
+  return this->c.rbegin();
+}
+
+template <typename T>
+typename MutantStack<T>::reverse_iterator MutantStack<T>::rend(void) {
+  return this->c.rend();
+}
+
+template <typename T>
+const typename MutantStack<T>::const_reverse_iterator MutantStack<T>::crbegin(
+    void) {
+  return this->c.rbegin();
+}
+
+template <typename T>
+const typename MutantStack<T>::const_reverse_iterator MutantStack<T>::crend(
+    void) {
+  return this->c.rend();
 }
 
 template <typename T>

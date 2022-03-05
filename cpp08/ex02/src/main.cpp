@@ -9,17 +9,71 @@
  *
  */
 
+#include <algorithm>
 #include <iostream>
 
 #include "mutantstack.hpp"
 
-int main() {
+void myMutantStackTest(int argc, char **argv) {
+  MutantStack<std::string> args;
+  for (int i = 0; i < argc; i++) {
+    args.push(argv[i]);
+  }
+  {
+    std::cout << "iterator test" << std::endl;
+    MutantStack<std::string>::iterator it = args.begin();
+    MutantStack<std::string>::iterator ite = args.end();
+    ++it;
+    --it;
+    while (it != ite) {
+      std::cout << *it << std::endl;
+      ++it;
+    }
+  }
+  {
+    std::cout << "reverse_iterator test" << std::endl;
+    MutantStack<std::string>::reverse_iterator it = args.rbegin();
+    MutantStack<std::string>::reverse_iterator ite = args.rend();
+    ++it;
+    --it;
+    while (it != ite) {
+      std::cout << *it << std::endl;
+      ++it;
+    }
+  }
+  {
+    std::cout << "const_iterator test" << std::endl;
+    MutantStack<std::string>::const_iterator it = args.cbegin();
+    MutantStack<std::string>::const_iterator ite = args.cend();
+    ++it;
+    --it;
+    while (it != ite) {
+      std::cout << *it << std::endl;
+      ++it;
+    }
+  }
+  {
+    std::cout << "const_reverse_iterator test" << std::endl;
+    MutantStack<std::string>::const_reverse_iterator it = args.crbegin();
+    MutantStack<std::string>::const_reverse_iterator ite = args.crend();
+    ++it;
+    --it;
+    while (it != ite) {
+      std::cout << *it << std::endl;
+      ++it;
+    }
+  }
+}
+
+int main(int argc, char **argv) {
+  std::cout << "========== TEST IN SUBJECT ==========\n";
   MutantStack<int> mstack;
   mstack.push(5);
   mstack.push(17);
   std::cout << mstack.top() << std::endl;
   mstack.pop();
   std::cout << mstack.size() << std::endl;
+  std::cout << "=========================\n";
   mstack.push(3);
   mstack.push(5);
   mstack.push(737);
@@ -34,5 +88,6 @@ int main() {
     ++it;
   }
   std::stack<int> s(mstack);
+  myMutantStackTest(argc, argv);
   return 0;
 }
