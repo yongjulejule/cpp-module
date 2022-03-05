@@ -14,11 +14,11 @@
 #include <cmath>
 #include <iostream>
 
-Fixed::Fixed(void) { setRawBits(0); }
+Fixed::Fixed(void) : _fixedPoint(0) {}
 
-Fixed::Fixed(int num) { setRawBits(num << _fracBits); }
+Fixed::Fixed(int num) : _fixedPoint(num << _fracBits) {}
 
-Fixed::Fixed(float num) { setRawBits(roundf((num * (1 << _fracBits)))); }
+Fixed::Fixed(float num) : _fixedPoint(roundf(num * (1 << _fracBits))) {}
 
 Fixed::Fixed(const Fixed& src) { *this = src; }
 

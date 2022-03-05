@@ -1,7 +1,7 @@
 /**
  * @file Fixed.cpp
  * @author yongjule (lyjshow200@gmail.com)
- * @brief
+ * @brief Fixed class implementation
  * @version 0.1
  * @date 2022-02-20
  *
@@ -14,19 +14,16 @@
 #include <cmath>
 #include <iostream>
 
-Fixed::Fixed(void) {
+Fixed::Fixed(void) : _fixedPoint(0) {
   std::cout << "Default constructor called\n";
-  setRawBits(0);
 }
 
-Fixed::Fixed(int num) {
+Fixed::Fixed(int num) : _fixedPoint(num << _fracBits) {
   std::cout << "Int constructor called\n";
-  setRawBits(num << _fracBits);
 }
 
-Fixed::Fixed(float num) {
+Fixed::Fixed(float num) : _fixedPoint(roundf(num * (1 << _fracBits))) {
   std::cout << "Float constructor called\n";
-  setRawBits(roundf((num * (1 << _fracBits))));
 }
 
 Fixed::Fixed(const Fixed& src) {
@@ -34,16 +31,10 @@ Fixed::Fixed(const Fixed& src) {
   *this = src;
 }
 
-Fixed::~Fixed(void) { std::cout << "Destructor called\n"; }
-
-const Fixed& Fixed::operator=(const Fixed& src) {
+Fixed& Fixed::operator=(const Fixed& src) {
   std::cout << "Assignation operator called\n";
   this->setRawBits(src.getRawBits());
-  return src;
-}
-
-std::ostream& operator<<(std::ostream& out, const Fixed& src) {
-  return out << (src.toFloat());
+  return *this;
 }
 
 int Fixed::getRawBits(void) const { return _fixedPoint; }
@@ -54,4 +45,10 @@ int Fixed::toInt(void) const { return getRawBits() >> _fracBits; }
 
 float Fixed::toFloat(void) const {
   return static_cast<float>(getRawBits()) / (1 << _fracBits);
+}
+
+Fixed::~Fixed(void) { std::cout << "Destructor called\n"; }
+
+std::ostream& operator<<(std::ostream& out, const Fixed& src) {
+  return out << (src.toFloat());
 }

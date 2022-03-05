@@ -1,7 +1,7 @@
 /**
  * @file Fixed.hpp
  * @author yongjule (lyjshow200@gmail.com)
- * @brief class Fixed definition
+ * @brief class Fixed declaration
  * @version 0.1
  * @date 2022-02-20
  *
@@ -20,13 +20,13 @@ class Fixed {
  public:
   Fixed(void);
   Fixed(const Fixed& src);
-  ~Fixed(void);
 
-  // assign operator
-  const Fixed& operator=(const Fixed& src);
+  Fixed& operator=(const Fixed& src);
 
   int getRawBits(void) const;
   void setRawBits(int const raw);
+
+  ~Fixed(void);
 };
 
 #endif  // FIXED_HPP

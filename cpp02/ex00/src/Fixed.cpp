@@ -1,7 +1,7 @@
 /**
  * @file Fixed.cpp
  * @author yongjule (lyjshow200@gmail.com)
- * @brief
+ * @brief class Fixed implementation
  * @version 0.1
  * @date 2022-02-20
  *
@@ -13,8 +13,7 @@
 
 #include <iostream>
 
-Fixed::Fixed(void) {
-  setRawBits(0);
+Fixed::Fixed(void) : _fixedPoint(0) {
   std::cout << "Default constructor called\n";
 }
 
@@ -25,10 +24,10 @@ Fixed::Fixed(const Fixed& src) {
 
 Fixed::~Fixed(void) { std::cout << "Destructor called\n"; }
 
-const Fixed& Fixed::operator=(const Fixed& src) {
+Fixed& Fixed::operator=(const Fixed& src) {
   std::cout << "Assignation operator called\n";
   this->setRawBits(src.getRawBits());
-  return src;
+  return *this;
 }
 
 int Fixed::getRawBits(void) const {
