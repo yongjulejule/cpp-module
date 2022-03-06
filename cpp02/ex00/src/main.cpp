@@ -1,7 +1,7 @@
 /**
  * @file main.cpp
  * @author yongjule (lyjshow200@gmail.com)
- * @brief
+ * @brief main for Fixed class
  * @version 0.1
  * @date 2022-02-20
  *

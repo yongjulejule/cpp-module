@@ -14,15 +14,13 @@
 #include <cmath>
 #include <iostream>
 
-Fixed::Fixed(void) { setRawBits(0); }
+Fixed::Fixed(void) : _fixedPoint(0) {}
 
-Fixed::Fixed(int num) { setRawBits(num << _fracBits); }
+Fixed::Fixed(int num) : _fixedPoint(num << _fracBits) {}
 
-Fixed::Fixed(float num) { setRawBits(roundf((num * (1 << _fracBits)))); }
+Fixed::Fixed(float num) : _fixedPoint(roundf(num * (1 << _fracBits))) {}
 
 Fixed::Fixed(const Fixed& src) { *this = src; }
-
-Fixed::~Fixed(void) {}
 
 Fixed& Fixed::operator=(const Fixed& src) {
   this->setRawBits(src.getRawBits());
@@ -124,3 +122,5 @@ const Fixed& Fixed::min(const Fixed& v1, const Fixed& v2) {
 const Fixed& Fixed::max(const Fixed& v1, const Fixed& v2) {
   return ((Fixed)v1 > (Fixed)v2) ? v1 : v2;
 }
+
+Fixed::~Fixed(void) {}

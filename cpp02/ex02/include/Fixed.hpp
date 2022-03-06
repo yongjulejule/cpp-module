@@ -24,7 +24,6 @@ class Fixed {
   Fixed(int num);
   Fixed(float num);
   Fixed(const Fixed& src);
-  ~Fixed(void);
 
   int getRawBits(void) const;
   void setRawBits(int const raw);
@@ -59,6 +58,8 @@ class Fixed {
   static Fixed& max(Fixed& v1, Fixed& v2);
   static const Fixed& min(const Fixed& v1, const Fixed& v2);
   static const Fixed& max(const Fixed& v1, const Fixed& v2);
+
+  ~Fixed(void);
 };
 
 std::ostream& operator<<(std::ostream& out, const Fixed& src);

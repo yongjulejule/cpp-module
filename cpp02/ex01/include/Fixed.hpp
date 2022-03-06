@@ -1,7 +1,7 @@
 /**
  * @file Fixed.hpp
  * @author yongjule (lyjshow200@gmail.com)
- * @brief class Fixed definition
+ * @brief Fixed class declaration
  * @version 0.1
  * @date 2022-02-20
  *
@@ -24,14 +24,16 @@ class Fixed {
   Fixed(int num);
   Fixed(float num);
   Fixed(const Fixed& src);
-  ~Fixed(void);
-  const Fixed& operator=(const Fixed& src);
+
+  Fixed& operator=(const Fixed& src);
 
   int getRawBits(void) const;
   void setRawBits(int const raw);
 
   int toInt(void) const;
   float toFloat(void) const;
+
+  ~Fixed(void);
 };
 
 std::ostream& operator<<(std::ostream& out, const Fixed& src);
