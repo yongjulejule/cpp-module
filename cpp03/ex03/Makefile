@@ -24,6 +24,7 @@ SRCS			= $(addprefix $(SRCS_DIR), \
 
 
 OBJS			= ${SRCS:%.cpp=%.o}
+ASMS			= ${SRCS:%.cpp=%.s}
 
 OBJ_FILES	= $(OBJS)
 
@@ -60,12 +61,14 @@ $(NAME)		: 	$(OBJS)
 .PHONY			:	clean
 clean			:
 					@rm -f $(OBJS)
+					@rm -f $(ASMS)
 					@echo $(L_RED) Remove🧹 OBJ files in $(NAME) 👋 $(RESET)
 
 
 .PHONY			:	fclean
 fclean			:	clean
 					@rm -f $(NAME)
+					@rm -f asm.out
 					@echo $(RED) Remove🧹 $(NAME) 📣 $(RESET)
 
 .PHONY			:	re
@@ -80,3 +83,11 @@ debug			:
 leaks			:
 					@make LEAKS=1
 					@echo $(RED)$(BOLD) Is there Leaks?🚰$(RESET)
+
+.PHONY			:	asm
+asm				:   $(ASMS)
+					@$(CXX) $(CXXFLAGS) $(ASMS) -I$(INC_DIR) -o asm.out
+					@echo $(RED)$(BOLD) ASSEMBLY $(RESET)
+
+%.s				:	%.cpp
+					$(CXX) $(CXXFLAGS) -I$(INC_DIR) -S $< -o $@

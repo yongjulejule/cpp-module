@@ -14,10 +14,6 @@
 #include "DiamondTrap.hpp"
 
 int main(int argc, char **argv) {
-  if (argc != 4) {
-    std::cout << "give me 2 arguments which name of Traps\n";
-    return EXIT_FAILURE;
-  }
   ClapTrap *test1 = new ClapTrap("CLAP");
   ClapTrap *test2 = new DiamondTrap("DIAMOND");
 
@@ -37,7 +33,12 @@ int main(int argc, char **argv) {
   delete test2;
   delete test1;
 
-  std::cout << "\n\n=======================================\n\n" << std::endl;
+  std::cout << "\n\n=============== MY TESTS ========================\n\n"
+            << std::endl;
+  if (argc != 4) {
+    std::cout << "give me 2 arguments which name of Traps\n";
+    return EXIT_FAILURE;
+  }
 
   ScavTrap first(argv[1]);
   FragTrap sec(argv[2]);

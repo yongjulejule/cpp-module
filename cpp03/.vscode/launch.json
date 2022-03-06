@@ -4,6 +4,20 @@
 	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
 	"version": "0.2.0",
 	"configurations": [
+		{
+			"name": "(lldb) Launch ASM",
+			"type": "lldb",
+			"request": "launch",
+			// "program": "${workspaceFolder}/${intput:filename}",
+			"program": "${workspaceFolder}/ex03/diamondTrap",
+			"args": [],
+			"stopAtEntry": false,
+			"cwd": "${fileDirname}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "lldb"
+		},
+		
 	{
 		"name": "(lldb) Launch",
 		"type": "lldb",
