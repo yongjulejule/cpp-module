@@ -1,7 +1,7 @@
 /**
  * @file main.cpp
  * @author yongjule (lyjshow200@gmail.com)
- * @brief
+ * @brief main function for test Fixed class
  * @version 0.1
  * @date 2022-02-20
  *
@@ -32,7 +32,7 @@ int main(void) {
   std::cout << "a / b : " << (a / b) << std::endl;
 
   std::cout << "\n=========== Here is comparision operation ===========\n\n";
-  std::cout << "a > b : " << (a > b) << std::endl;
+  std::cout << "a > b : " << std::boolalpha << (a > b) << std::endl;
   std::cout << "a < b : " << (a < b) << std::endl;
   std::cout << "a >= b : " << (a >= b) << std::endl;
   std::cout << "a <= b : " << (a <= b) << std::endl;

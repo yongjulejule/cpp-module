@@ -26,15 +26,12 @@ bool isTriangle(Point const &a, Point const &b, Point const &c) {
 
 bool bsp(Point const a, Point const b, Point const c, Point const point) {
   if (!isTriangle(a, b, c)) {
-    std::cout << "<a, b, c>\n"
-              << const_cast<Point &>(a) << " " << const_cast<Point &>(b) << " "
-              << const_cast<Point &>(c) << " cannot generate triangle\n";
+    std::cout << L_YELLOW << a << " " << b << " " << c
+              << " cannot generate triangle\n" RESET;
     return false;
   }
-  Point v[3] = {const_cast<Point &>(b) - a, const_cast<Point &>(c) - b,
-                const_cast<Point &>(a) - c};
-  Point p[3] = {const_cast<Point &>(point) - a, const_cast<Point &>(point) - b,
-                const_cast<Point &>(point) - c};
+  Point v[3] = {b - a, c - b, a - c};
+  Point p[3] = {point - a, point - b, point - c};
 
   return (Point::crossProduct(v[0], p[0]) > 0 &&
           Point::crossProduct(v[1], p[1]) > 0 &&

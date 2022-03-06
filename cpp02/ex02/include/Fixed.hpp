@@ -1,7 +1,7 @@
 /**
  * @file Fixed.hpp
  * @author yongjule (lyjshow200@gmail.com)
- * @brief
+ * @brief Fiexed class declaration
  * @version 0.1
  * @date 2022-02-21
  *
@@ -25,12 +25,6 @@ class Fixed {
   Fixed(float num);
   Fixed(const Fixed& src);
 
-  int getRawBits(void) const;
-  void setRawBits(int const raw);
-
-  int toInt(void) const;
-  float toFloat(void) const;
-
   // assign operator
   Fixed& operator=(const Fixed& src);
 
@@ -53,6 +47,12 @@ class Fixed {
   bool operator>=(const Fixed& src);
   bool operator<=(const Fixed& src);
   bool operator!=(const Fixed& src);
+
+  int getRawBits(void) const;
+  void setRawBits(int const raw);
+
+  int toInt(void) const;
+  float toFloat(void) const;
 
   static Fixed& min(Fixed& v1, Fixed& v2);
   static Fixed& max(Fixed& v1, Fixed& v2);

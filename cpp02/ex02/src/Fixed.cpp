@@ -1,7 +1,7 @@
 /**
  * @file Fixed.cpp
  * @author yongjule (lyjshow200@gmail.com)
- * @brief
+ * @brief Fiexed class implementation
  * @version 0.1
  * @date 2022-02-21
  *
@@ -97,10 +97,6 @@ Fixed Fixed::operator--(int) {
   return temp;
 }
 
-std::ostream& operator<<(std::ostream& out, const Fixed& src) {
-  return out << (src.toFloat());
-}
-
 int Fixed::getRawBits(void) const { return _fixedPoint; }
 
 void Fixed::setRawBits(int const raw) { _fixedPoint = raw; }
@@ -116,11 +112,15 @@ Fixed& Fixed::min(Fixed& v1, Fixed& v2) { return (v1 < v2) ? v1 : v2; }
 Fixed& Fixed::max(Fixed& v1, Fixed& v2) { return (v1 > v2) ? v1 : v2; }
 
 const Fixed& Fixed::min(const Fixed& v1, const Fixed& v2) {
-  return ((Fixed)v1 < (Fixed)v2) ? v1 : v2;
+  return (v1.toFloat() < v2.toFloat()) ? v1 : v2;
 }
 
 const Fixed& Fixed::max(const Fixed& v1, const Fixed& v2) {
-  return ((Fixed)v1 > (Fixed)v2) ? v1 : v2;
+  return (v1.toFloat() > v2.toFloat()) ? v1 : v2;
 }
 
 Fixed::~Fixed(void) {}
+
+std::ostream& operator<<(std::ostream& out, const Fixed& src) {
+  return out << (src.toFloat());
+}
