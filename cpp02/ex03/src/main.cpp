@@ -72,5 +72,9 @@ int main(void) {
   ret = bsp(a, b, ft, ftft);
   printBSPResult(a, b, ft, ftft, ret);
 
+  Fixed y2(-4242);
+  Point ft2(x, y2);
+  bsp(a, b, ft2, ftft);
+
   return 0;
 }

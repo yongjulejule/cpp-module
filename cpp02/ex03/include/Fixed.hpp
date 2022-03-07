@@ -32,13 +32,13 @@ class Fixed {
   float toFloat(void) const;
 
   // assign operator
-  Fixed& operator=(const Fixed& src);
+  Fixed& operator=(const Fixed& rhs);
 
   // arithmetic operator
-  Fixed operator+(const Fixed& src) const;
-  Fixed operator-(const Fixed& src) const;
-  Fixed operator*(const Fixed& src) const;
-  Fixed operator/(const Fixed& src) const;
+  Fixed operator+(const Fixed& rhs) const;
+  Fixed operator-(const Fixed& rhs) const;
+  Fixed operator*(const Fixed& rhs) const;
+  Fixed operator/(const Fixed& rhs) const;
 
   // increment/decrement operator
   Fixed& operator++(void);
@@ -47,12 +47,12 @@ class Fixed {
   Fixed operator--(int);
 
   // comparision operator
-  bool operator==(const Fixed& src);
-  bool operator>(const Fixed& src);
-  bool operator<(const Fixed& src);
-  bool operator>=(const Fixed& src);
-  bool operator<=(const Fixed& src);
-  bool operator!=(const Fixed& src);
+  bool operator==(const Fixed& rhs) const;
+  bool operator>(const Fixed& rhs) const;
+  bool operator<(const Fixed& rhs) const;
+  bool operator>=(const Fixed& rhs) const;
+  bool operator<=(const Fixed& rhs) const;
+  bool operator!=(const Fixed& rhs) const;
 
   static Fixed& min(Fixed& v1, Fixed& v2);
   static Fixed& max(Fixed& v1, Fixed& v2);
@@ -62,6 +62,6 @@ class Fixed {
   ~Fixed(void);
 };
 
-std::ostream& operator<<(std::ostream& out, const Fixed& src);
+std::ostream& operator<<(std::ostream& out, const Fixed& rhs);
 
 #endif  // FIXED_HPP

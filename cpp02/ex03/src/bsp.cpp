@@ -12,11 +12,10 @@
 #include "Point.hpp"
 
 bool isTriangle(Point const &a, Point const &b, Point const &c) {
+  if (a == b || a == c || b == c) return false;
   Fixed x[3] = {a.getX(), b.getX(), c.getX()};
   Fixed y[3] = {a.getY(), b.getY(), c.getY()};
-  if (x[0] == x[1] && x[0] == x[2]) {
-    return false;
-  } else if (x[0] == x[1] || x[0] == x[2]) {
+  if (x[0] == x[1] || x[0] == x[2]) {
     return true;
   }
   Fixed slope[2] = {(y[2] - y[0]) / (x[2] - x[0]),

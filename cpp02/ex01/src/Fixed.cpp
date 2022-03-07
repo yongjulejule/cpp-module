@@ -37,14 +37,14 @@ Fixed& Fixed::operator=(const Fixed& src) {
   return *this;
 }
 
-int Fixed::getRawBits(void) const { return _fixedPoint; }
+int Fixed::getRawBits(void) const { return this->_fixedPoint; }
 
-void Fixed::setRawBits(int const raw) { _fixedPoint = raw; }
+void Fixed::setRawBits(int const raw) { this->_fixedPoint = raw; }
 
-int Fixed::toInt(void) const { return getRawBits() >> _fracBits; }
+int Fixed::toInt(void) const { return this->getRawBits() >> _fracBits; }
 
 float Fixed::toFloat(void) const {
-  return static_cast<float>(getRawBits()) / (1 << _fracBits);
+  return static_cast<float>(this->getRawBits()) / (1 << _fracBits);
 }
 
 Fixed::~Fixed(void) { std::cout << "Destructor called\n"; }

@@ -21,21 +21,23 @@ Point::Point(int x, int y) : _x(x), _y(y) {}
 
 Point::Point(float x, float y) : _x(x), _y(y) {}
 
-Point& Point::operator=(const Point& src) {
-  if (this == &src) return *this;
-  const_cast<Fixed&>(this->_x) = src.getX();
-  const_cast<Fixed&>(this->_y) = src.getY();
+Point::Point(const Point& src) { *this = src; }
+
+Point& Point::operator=(const Point& rhs) {
+  if (this == &rhs) return *this;
+  const_cast<Fixed&>(this->_x) = rhs.getX();
+  const_cast<Fixed&>(this->_y) = rhs.getY();
   return *this;
 }
 
-Point Point::operator-(const Point& src) const {
-  Point tmp(this->getX() - src.getX(), this->getY() - src.getY());
+Point Point::operator-(const Point& rhs) const {
+  Point tmp(this->getX() - rhs.getX(), this->getY() - rhs.getY());
   return tmp;
 }
 
-Point::Point(const Point& src) { *this = src; }
-
-Point::~Point(void) {}
+bool Point::operator==(const Point& rhs) const {
+  return (this->getX() == rhs.getX() && this->getY() == rhs.getY());
+}
 
 const Fixed& Point::getX(void) const { return _x; }
 
@@ -44,6 +46,8 @@ const Fixed& Point::getY(void) const { return _y; }
 Fixed Point::crossProduct(const Point& x, const Point& y) {
   return ((x.getX()) * y.getY()) - ((x.getY()) * y.getX());
 }
+
+Point::~Point(void) {}
 
 std::ostream& operator<<(std::ostream& out, const Point& src) {
   return out << "(" << src.getX() << ", " << src.getY() << ")";

@@ -28,20 +28,21 @@ class Point {
   Point(void);
   Point(int x, int y);
   Point(float x, float y);
-  Point(const Point& src);
+  Point(const Point& rhs);
   Point(const Fixed& x, const Fixed& y);
 
   const Fixed& getX(void) const;
   const Fixed& getY(void) const;
 
-  Point& operator=(const Point& src);
-  Point operator-(const Point& src) const;
+  Point& operator=(const Point& rhs);
+  Point operator-(const Point& rhs) const;
+  bool operator==(const Point& rhs) const;
 
   static Fixed crossProduct(const Point& x, const Point& y);
   ~Point(void);
 };
 
-std::ostream& operator<<(std::ostream& out, const Point& src);
+std::ostream& operator<<(std::ostream& out, const Point& rhs);
 bool bsp(Point const a, Point const b, Point const c, Point const point);
 
 #endif  // POINT_HPP
