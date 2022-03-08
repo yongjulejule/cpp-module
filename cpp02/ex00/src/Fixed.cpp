@@ -35,9 +35,4 @@ int Fixed::getRawBits(void) const {
   return this->_fixedPoint;
 }
 
-void Fixed::setRawBits(int const raw) {
-  bool isSigned = (raw >> 31) & 1;
-  this->_fixedPoint =
-      isSigned ? (static_cast<uint64_t>(raw) << _fracBits) | 0x80000000
-               : static_cast<uint64_t>(raw) << _fracBits;
-}
+void Fixed::setRawBits(int const raw) { this->_fixedPoint = raw; }

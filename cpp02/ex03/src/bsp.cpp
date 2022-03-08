@@ -1,7 +1,7 @@
 /**
  * @file bsp.cpp
  * @author yongjule (lyjshow200@gmail.com)
- * @brief
+ * @brief binary space partitioning
  * @version 0.1
  * @date 2022-02-22
  *

@@ -44,7 +44,8 @@ const Fixed& Point::getX(void) const { return _x; }
 const Fixed& Point::getY(void) const { return _y; }
 
 Fixed Point::crossProduct(const Point& x, const Point& y) {
-  return ((x.getX()) * y.getY()) - ((x.getY()) * y.getX());
+  return ((x.getX().toFloat()) * y.getY().toFloat()) -
+         ((x.getY().toFloat()) * y.getX().toFloat());
 }
 
 Point::~Point(void) {}
