@@ -5,7 +5,7 @@ ifdef DEBUG
 else ifdef LEAKS
 	CXXFLAGS = --std=c++98 -g
 else 
-	CXXFLAGS	= --std=c++98 -Wall -Wextra -Werror -Wshadow
+	CXXFLAGS	= --std=c++98 -Wall -Wextra -Werror
 endif
 
 NAME			= diamondTrap #Name of program
