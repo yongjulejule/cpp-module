@@ -24,10 +24,10 @@ class Dog : public Animal {
   Dog(const Dog& src);
   Dog& operator=(const Dog& src);
 
-  Brain* getBrains(void) const;
-
+  void printBrain(void) const;
   void makeSound(void) const;
-  ~Dog(void);
+
+  virtual ~Dog(void);
 };
 
 #endif  // DOG_HPP

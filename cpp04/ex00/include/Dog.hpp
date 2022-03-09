@@ -21,7 +21,7 @@ class Dog : public Animal {
   Dog& operator=(const Dog& src);
 
   void makeSound(void) const;
-  ~Dog(void);
+  virtual ~Dog(void);
 };
 
 #endif  // DOG_HPP

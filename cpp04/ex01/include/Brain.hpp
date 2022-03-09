@@ -20,6 +20,12 @@ class Brain {
 
  public:
   Brain(void);
+  Brain(const Brain& src);
+
+  Brain& operator=(const Brain& src);
+
+  std::string* getIdeas(void);
+
   ~Brain(void);
 };
 

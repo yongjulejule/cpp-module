@@ -20,7 +20,7 @@ Animal::Animal(void) : _type("Just Animal") {
 Animal::Animal(const Animal& src) { *this = src; }
 
 Animal& Animal::operator=(const Animal& src) {
-  this->_type = src.getType();
+  this->_type = src._type;
   return *this;
 }
 

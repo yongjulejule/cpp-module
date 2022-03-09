@@ -17,7 +17,7 @@
 #include "Dog.hpp"
 
 int main(void) {
-  int SIZE = 2;
+  int SIZE = 50;
   std::cout << "============ANIMAL ARRAY===============\n";
   Animal** animals = new Animal*[SIZE];
   for (int i = 0; i < SIZE; i++) {
@@ -26,27 +26,33 @@ int main(void) {
     else
       animals[i] = new Dog();
   }
-  for (int i = 0; i < SIZE; i++) {
-    delete animals[i];
-    std::cout << "==============\n";
-  }
+  // Brain* brain = animals[0]->getBrains();
+  // std::string* idea = brain->getIdeas();
+  // for (int i = 0; i < 100; i++) {
+  //   std::cout << idea[i] << std::endl;
+  // }
+  // for (int i = 0; i < SIZE; i++) {
+  //   delete animals[i];
+  //   animals[i] = NULL;
+  //   std::cout << "==============\n";
+  // }
   delete[] animals;
   std::cout << "==========ANIMAL ARRAY END=================\n";
-  const Animal* meta = new Animal();
+  // const Animal* meta = new Animal();
   const Animal* dog = new Dog();
   const Animal* cat = new Cat();
   Cat cat1;
   Cat cat2(cat1);
 
-  std::cout << meta->getType() << std::endl;
+  // std::cout << meta->getType() << std::endl;
   std::cout << dog->getType() << std::endl;
   std::cout << cat->getType() << std::endl;
 
-  meta->makeSound();
+  // meta->makeSound();
   dog->makeSound();
   cat->makeSound();
 
-  delete meta;
+  // delete meta;
   delete dog;
   delete cat;
 

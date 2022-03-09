@@ -13,6 +13,7 @@
 #define ANIMAL_HPP
 
 #include <string>
+class Brain;
 
 class Animal {
  protected:
