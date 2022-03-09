@@ -29,7 +29,7 @@ class DiamondTrap : public FragTrap, public ScavTrap {
   using ScavTrap::attack;
   void whoAmI(void);
 
-  ~DiamondTrap(void);
+  virtual ~DiamondTrap(void);
 };
 
 #endif  // DIAMONDTRAP_HPP

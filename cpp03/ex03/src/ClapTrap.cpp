@@ -27,7 +27,7 @@ ClapTrap::ClapTrap(std::string name)
     : _name(name),
       _hitPoints(10),
       _energyPoints(10),
-      _attackDamage(10),
+      _attackDamage(0),
       _maxHitPoints(10),
       _maxEnergyPoints(10) {
   std::cout << "class ClapTrap : initialized with name : " << name << std::endl;
@@ -44,6 +44,8 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& src) {
   this->_hitPoints = src._hitPoints;
   this->_energyPoints = src._energyPoints;
   this->_attackDamage = src._attackDamage;
+  this->_maxHitPoints = src._maxHitPoints;
+  this->_maxEnergyPoints = src._maxEnergyPoints;
   return *this;
 }
 
@@ -110,5 +112,5 @@ void ClapTrap::showStat(void) const {
 }
 
 ClapTrap::~ClapTrap(void) {
-  std::cout << "class ClapTrap : " << _name << " is destructed\n";
+  std::cout << "class ClapTrap : " << this->_name << " is destructed\n";
 }

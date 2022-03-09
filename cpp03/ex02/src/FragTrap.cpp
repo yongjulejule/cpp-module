@@ -24,7 +24,6 @@ FragTrap::FragTrap(void) : ClapTrap() {
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name) {
   std::cout << "class FragTrap : initialized with name : " << name << std::endl;
-  this->_name = name;
   this->_hitPoints = 100;
   this->_energyPoints = 100;
   this->_attackDamage = 30;
@@ -43,6 +42,8 @@ FragTrap& FragTrap::operator=(const FragTrap& src) {
   this->_hitPoints = src._hitPoints;
   this->_energyPoints = src._energyPoints;
   this->_attackDamage = src._attackDamage;
+  this->_maxHitPoints = src._maxHitPoints;
+  this->_maxEnergyPoints = src._maxEnergyPoints;
   return *this;
 }
 

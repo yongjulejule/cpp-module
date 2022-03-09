@@ -18,14 +18,17 @@ ScavTrap::ScavTrap(void) : ClapTrap() {
   this->_hitPoints = 100;
   this->_energyPoints = 50;
   this->_attackDamage = 20;
+  this->_maxHitPoints = 100;
+  this->_maxEnergyPoints = 50;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
-  this->_name = name;
+  std::cout << "class ScavTrap : initialized with name : " << name << std::endl;
   this->_hitPoints = 100;
   this->_energyPoints = 50;
   this->_attackDamage = 20;
-  std::cout << "class ScavTrap : initialized with name : " << name << std::endl;
+  this->_maxHitPoints = 100;
+  this->_maxEnergyPoints = 50;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& src) {
@@ -39,15 +42,27 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& src) {
   this->_hitPoints = src._hitPoints;
   this->_energyPoints = src._energyPoints;
   this->_attackDamage = src._attackDamage;
+  this->_maxHitPoints = src._maxHitPoints;
+  this->_maxEnergyPoints = src._maxEnergyPoints;
   return *this;
 }
 
 void ScavTrap::guardGate(void) {
-  std::cout << "\033[31m!! ANNOUNCE !! ScavTrap <" << this->_name
-            << "> guard gate! \033[0m\n";
+  if (this->_hitPoints == 0) {
+    std::cout << YELLOW "ScavTrap <" << this->_name
+              << "> is already DEAD!☠️\n" RESET;
+    return;
+  }
+  std::cout << L_MAGENTA "!! ANNOUNCE !! ScavTrap <" << this->_name
+            << "> guard gate!\n" RESET;
+}
+
+void ScavTrap::attack(std::string const& target) {
+  std::cout << L_RED << "ScavTrap <" << this->_name << "> attack <" << target
+            << ">, causing <" << this->_attackDamage << "> points of damage!\n"
+            << RESET;
 }
 
 ScavTrap::~ScavTrap(void) {
-  std::cout << "class ScavTrap : " << this->_name << " is destructed"
-            << std::endl;
+  std::cout << "class ScavTrap : " << this->_name << " is destructed\n";
 }

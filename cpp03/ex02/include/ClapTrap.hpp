@@ -39,7 +39,7 @@ class ClapTrap {
   ClapTrap(const ClapTrap& src);
   ClapTrap& operator=(const ClapTrap& src);
 
-  void attack(std::string const& target);
+  virtual void attack(std::string const& target);
   void takeDamage(unsigned int amount);
   void beRepaird(unsigned int amount);
 
@@ -48,7 +48,7 @@ class ClapTrap {
   unsigned int getEnergyPoint(void) const;
   unsigned int getAttackDamage(void) const;
 
-  ~ClapTrap(void);
+  virtual ~ClapTrap(void);
 };
 
 #endif  // CLAPTRAP_HPP

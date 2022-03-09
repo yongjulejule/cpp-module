@@ -14,12 +14,22 @@
 #include <iostream>
 
 ClapTrap::ClapTrap(void)
-    : _name("noName"), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
+    : _name("noName"),
+      _hitPoints(10),
+      _energyPoints(10),
+      _attackDamage(0),
+      _maxHitPoints(10),
+      _maxEnergyPoints(10) {
   std::cout << "class ClapTrap : initialized without name\n";
 }
 
 ClapTrap::ClapTrap(std::string name)
-    : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(10) {
+    : _name(name),
+      _hitPoints(10),
+      _energyPoints(10),
+      _attackDamage(0),
+      _maxHitPoints(10),
+      _maxEnergyPoints(10) {
   std::cout << "class ClapTrap : initialized with name : " << name << std::endl;
 }
 
@@ -38,38 +48,46 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& src) {
 }
 
 void ClapTrap::attack(std::string const& target) {
-  std::cout << "ClapTrap <" << this->_name << "> attack <" << target
-            << ">, causing <" << this->_attackDamage << "> points of damage!\n";
+  std::cout << L_RED << "ClapTrap <" << this->_name << "> attack <" << target
+            << ">, causing <" << this->_attackDamage << "> points of damage!\n"
+            << RESET;
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
   if (this->_hitPoints == 0) {
-    std::cout << "ClapTrap <" << this->_name << "> is already DEAD!☠️\n";
+    std::cout << YELLOW << "ClapTrap <" << this->_name
+              << "> is already DEAD!☠️\n"
+              << RESET;
     return;
   }
   if (this->_hitPoints <= amount) {
     this->_hitPoints = 0;
-    std::cout << "ClapTrap <" << this->_name << "> take damage <" << amount
-              << ">, So It's COMPLETELY destroyed!☠️\n";
+    std::cout << RED << "ClapTrap <" << this->_name << "> take damage <"
+              << amount << ">, So It's COMPLETELY destroyed!☠️\n"
+              << RESET;
     return;
   }
   this->_hitPoints -= amount;
-  std::cout << "ClapTrap <" << this->_name << "> take damage <" << amount
-            << ">, Now has <" << this->_hitPoints << "> points of HP!\n";
+  std::cout << RED << "ClapTrap <" << this->_name << "> take damage <" << amount
+            << ">, Now has <" << this->_hitPoints << "> points of HP!\n"
+            << RESET;
 }
 
 void ClapTrap::beRepaird(unsigned int amount) {
   if (this->_hitPoints == 0) {
-    std::cout << "Repair? Nice try but ClapTrap <" << this->_name
-              << "> already DEAD ⚰️ HAHA\n";
+    std::cout << YELLOW << "Repair? Nice try but ClapTrap <" << this->_name
+              << "> already DEAD ⚰️ HAHA\n"
+              << RESET;
     return;
   }
-  if (this->_hitPoints + amount >= ClapTrap::_maxHitPoints)
-    this->_hitPoints = ClapTrap::_maxHitPoints;
+  if (this->_hitPoints + amount >= this->_maxHitPoints)
+    this->_hitPoints = this->_maxHitPoints;
   else
     this->_hitPoints += amount;
-  std::cout << "ClapTrap <" << this->_name << "> be Repaird <" << amount
-            << ">, Now has <" << this->_hitPoints << "> points of HP!\n";
+  std::cout << L_GREEN << "ClapTrap <" << this->_name << "> be Repaird <"
+            << amount << ">, Now has <" << this->_hitPoints
+            << "> points of HP!\n"
+            << RESET;
 }
 
 std::string ClapTrap::getName(void) const { return this->_name; }
@@ -85,5 +103,5 @@ unsigned int ClapTrap::getAttackDamage(void) const {
 }
 
 ClapTrap::~ClapTrap(void) {
-  std::cout << "class ClapTrap : destructor called\n";
+  std::cout << "class ClapTrap : " << this->_name << " is destructed\n";
 }

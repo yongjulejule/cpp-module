@@ -18,20 +18,29 @@ int main(int argc, char **argv) {
     std::cout << "give me 2 arguments which name of ClapTrap\n";
     return EXIT_FAILURE;
   }
+  std::cout << "===============Generating traps...=================\n";
   ScavTrap first(argv[1]);
   ClapTrap sec(argv[2]);
+  ScavTrap third("DAEMON");
+  {
+    ClapTrap *forth = new ScavTrap("DAE42MON");
+    forth->attack("DAE42MON");
+    forth->takeDamage(forth->getAttackDamage());
+    delete forth;
+  }
 
-  first.attack(sec.getName());
-  sec.takeDamage(first.getAttackDamage());
-  first.attack(sec.getName());
-  sec.takeDamage(first.getAttackDamage());
-  first.attack(sec.getName());
-  sec.takeDamage(first.getAttackDamage());
-  first.attack(sec.getName());
-  sec.takeDamage(first.getAttackDamage());
-  first.attack(sec.getName());
-  sec.takeDamage(first.getAttackDamage());
+  std::cout << "===============Traps do something=================\n";
+  for (int i = 0; i < 5; i++) {
+    first.attack(sec.getName());
+    sec.takeDamage(first.getAttackDamage());
+  }
+  first.guardGate();
+  for (int i = 0; i < 5; i++) {
+    third.attack(first.getName());
+    first.takeDamage(third.getAttackDamage());
+  }
   first.guardGate();
   sec.beRepaird(100);
+  std::cout << "===============Traps end=================\n";
   return EXIT_SUCCESS;
 }

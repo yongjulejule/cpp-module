@@ -24,7 +24,6 @@ ScavTrap::ScavTrap(void) : ClapTrap() {
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
   std::cout << "class ScavTrap : initialized with name : " << name << std::endl;
-  this->_name = name;
   this->_hitPoints = 100;
   this->_maxHitPoints = 100;
   this->_energyPoints = 50;
@@ -43,13 +42,19 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& src) {
   this->_hitPoints = src._hitPoints;
   this->_energyPoints = src._energyPoints;
   this->_attackDamage = src._attackDamage;
+  this->_maxHitPoints = src._maxHitPoints;
+  this->_maxEnergyPoints = src._maxEnergyPoints;
   return *this;
 }
 
 void ScavTrap::guardGate(void) {
-  std::cout << L_MAGENTA << "!! ANNOUNCE !! ScavTrap <" << this->_name
-            << "> guard gate!\n"
-            << RESET;
+  if (this->_hitPoints == 0) {
+    std::cout << YELLOW "ScavTrap <" << this->_name
+              << "> is already DEAD!☠️\n" RESET;
+    return;
+  }
+  std::cout << L_MAGENTA "!! ANNOUNCE !! ScavTrap <" << this->_name
+            << "> guard gate!\n" RESET;
 }
 
 void ScavTrap::attack(std::string const& target) {

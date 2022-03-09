@@ -38,6 +38,7 @@ DiamondTrap::DiamondTrap(const DiamondTrap& src) { *this = src; }
 
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap& src) {
   this->_name = src._name;
+  this->_attackDamage = src._attackDamage;
   this->_hitPoints = src._hitPoints;
   this->_maxHitPoints = src._maxHitPoints;
   this->_energyPoints = src._energyPoints;

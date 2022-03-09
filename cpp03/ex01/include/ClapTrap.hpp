@@ -12,18 +12,26 @@
 #ifndef CLAPTRAP_HPP
 #define CLAPTRAP_HPP
 
+#define GREEN "\033[32m"
+#define L_GREEN "\033[1;32m"
+#define RED "\033[31m"
+#define L_RED "\033[1;31m"
+#define YELLOW "\033[33m"
+#define BLUE "\033[34m"
+#define L_MAGENTA "\033[1;35m"
+#define L_CYAN "\033[1;96m"
+#define RESET "\033[0m"
+
 #include <string>
 
 class ClapTrap {
- private:
-  const static unsigned int _maxHitPoints = 10;
-  const static unsigned int _maxEnergyPoints = 10;
-
  protected:
   std::string _name;
   unsigned int _hitPoints;
   unsigned int _energyPoints;
   unsigned int _attackDamage;
+  unsigned int _maxHitPoints;
+  unsigned int _maxEnergyPoints;
 
  public:
   ClapTrap(void);
@@ -31,7 +39,7 @@ class ClapTrap {
   ClapTrap(const ClapTrap& src);
   ClapTrap& operator=(const ClapTrap& src);
 
-  void attack(std::string const& target);
+  virtual void attack(std::string const& target);
   void takeDamage(unsigned int amount);
   void beRepaird(unsigned int amount);
 
@@ -40,7 +48,7 @@ class ClapTrap {
   unsigned int getEnergyPoint(void) const;
   unsigned int getAttackDamage(void) const;
 
-  ~ClapTrap(void);
+  virtual ~ClapTrap(void);
 };
 
 #endif  // CLAPTRAP_HPP

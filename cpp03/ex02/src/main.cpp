@@ -24,20 +24,11 @@ int main(int argc, char **argv) {
 
   first.attack(sec.getName());
   sec.takeDamage(first.getAttackDamage());
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
-  sec.highFivesGuys();
+  std::cout << "=============== FragTrap highfives ================\n";
+  for (int i = 0; i < 15; i++) {
+    sec.highFivesGuys();
+  }
+  std::cout << "=============== FragTrap highfives end ================\n";
   first.attack(sec.getName());
   sec.takeDamage(first.getAttackDamage());
   first.attack(sec.getName());

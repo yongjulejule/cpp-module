@@ -22,9 +22,9 @@ int main(int argc, char **argv) {
   test2->showStat();
 
   std::cout << std::endl;
-  test1->attack(test1->getName());
+  test1->attack(test2->getName());
   test2->takeDamage(test1->getAttackDamage());
-  test2->attack(test2->getName());
+  test2->attack(test1->getName());
   test1->takeDamage(test2->getAttackDamage());
   std::cout << std::endl;
   test1->showStat();
@@ -33,10 +33,9 @@ int main(int argc, char **argv) {
   delete test2;
   delete test1;
 
-  std::cout << "\n\n=============== MY TESTS ========================\n\n"
-            << std::endl;
+  std::cout << "\n\n=============== MY TESTS ========================\n\n\n";
   if (argc != 4) {
-    std::cout << "give me 2 arguments which name of Traps\n";
+    std::cout << "give me 3 arguments which name of Traps\n";
     return EXIT_FAILURE;
   }
 

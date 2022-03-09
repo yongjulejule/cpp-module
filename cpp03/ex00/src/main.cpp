@@ -23,9 +23,13 @@ int main(int argc, char **argv) {
 
   robot1.attack(robot2.getName());
   robot2.takeDamage(robot1.getAttackDamage());
+  robot1.attack(robot2.getName());
   robot2.takeDamage(robot1.getAttackDamage());
+  robot1.attack(robot2.getName());
   robot2.takeDamage(robot1.getAttackDamage());
+  robot1.attack(robot2.getName());
   robot2.takeDamage(robot1.getAttackDamage());
+  robot1.attack(robot2.getName());
   robot2.takeDamage(robot1.getAttackDamage());
   robot2.beRepaird(100);
 }

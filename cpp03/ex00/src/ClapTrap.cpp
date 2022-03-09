@@ -19,7 +19,7 @@ ClapTrap::ClapTrap(void)
 }
 
 ClapTrap::ClapTrap(std::string name)
-    : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(10) {
+    : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
   std::cout << "class ClapTrap : initialized with name : " << name << std::endl;
 }
 
@@ -85,5 +85,5 @@ unsigned int ClapTrap::getAttackDamage(void) const {
 }
 
 ClapTrap::~ClapTrap(void) {
-  std::cout << "class ClapTrap : destructor called\n";
+  std::cout << "class ClapTrap : " << this->_name << " is destructed\n";
 }

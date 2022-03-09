@@ -15,18 +15,18 @@
 #include "ClapTrap.hpp"
 
 class ScavTrap : public ClapTrap {
- private:
-  const static unsigned int _maxHitPoints = 100;
-  const static unsigned int _maxEnergyPoints = 50;
-
  public:
   ScavTrap(void);
   ScavTrap(std::string name);
   ScavTrap(const ScavTrap& src);
+
   ScavTrap& operator=(const ScavTrap& src);
-  ~ScavTrap(void);
+
+  void attack(std::string const& target);
 
   void guardGate(void);
+
+  virtual ~ScavTrap(void);
 };
 
 #endif  // SCAVTRAP_HPP
