@@ -14,24 +14,29 @@
 #include <iostream>
 
 Cat::Cat(void) : Animal() {
+  std::cout << "Cat constructor called\n";
   this->_type = "CAT";
   this->_brain = new Brain();
-  std::cout << "Cat constructor called\n";
 }
 
-Cat::Cat(const Cat& src) { *this = src; }
+Cat::Cat(const Cat& src) : Animal(), _brain(NULL) { *this = src; }
 
 Cat& Cat::operator=(const Cat& src) {
-  std::cout << "assign operator called in cat\n";
+  std::cout << "Cat assign operator called\n";
   this->_type = src.getType();
+  if (this->_brain != NULL) delete this->_brain;
   this->_brain = new Brain();
+  for (int i = 0; i < 100; i++) {
+    this->_brain->setIdea(i, src._brain->getIdea(i));
+  }
   return *this;
 }
 
 void Cat::makeSound(void) const { std::cout << "meow~ meow~\n"; }
-Brain* Cat::getBrains(void) const { return _brain; }
+
+Brain* Cat::getBrain(void) const { return this->_brain; }
 
 Cat::~Cat(void) {
-  delete this->_brain;
+  if (this->_brain != NULL) delete this->_brain;
   std::cout << "Cat destructor called\n";
 }

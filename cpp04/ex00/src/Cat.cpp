@@ -18,9 +18,13 @@ Cat::Cat(void) : Animal() {
   std::cout << "Cat constructor called\n";
 }
 
-Cat::Cat(const Cat& src) { *this = src; }
+Cat::Cat(const Cat& src) : Animal() {
+  std::cout << "Cat copy constructor called\n";
+  this->_type = src.getType();
+}
 
 Cat& Cat::operator=(const Cat& src) {
+  std::cout << "Cat assign operator called\n";
   this->_type = src.getType();
   return *this;
 }

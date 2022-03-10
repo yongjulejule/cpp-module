@@ -2,17 +2,31 @@ CXX						= c++
 
 ifdef DEBUG
 	CXXFLAGS = --std=c++98 -g3 -fsanitize=address
+else ifdef PRINT
+	CXXFLAGS	= --std=c++98 -Wall -Wextra -Werror
 else ifdef LEAKS
 	CXXFLAGS = --std=c++98 -g
 else 
 	CXXFLAGS	= --std=c++98 -Wall -Wextra -Werror
 endif
 
-NAME			=  HELL #Name of program
+ifdef PRINT
+	NAME			=  HELL_print
+else
+	NAME			=  HELL
+endif
 
-INC_DIR		= ./include/
+ifdef PRINT
+	INC_DIR = ./include_print/
+else
+	INC_DIR		= ./include/
+endif
 
-SRCS_DIR	= ./src/
+ifdef PRINT
+	SRCS_DIR	= ./src_print/
+else
+	SRCS_DIR	= ./src/
+endif
 
 SRCS			= $(addprefix $(SRCS_DIR), \
 				  main.cpp \
@@ -70,14 +84,19 @@ fclean			:	clean
 					@echo $(RED) Remove🧹 $(NAME) 📣 $(RESET)
 
 .PHONY			:	re
-re				:	fclean all
+re					:	fclean all
 
 .PHONY			:	debug
-debug			: 
+debug				: 
 					@make DEBUG=1
 					@echo $(RED)$(BOLD) It\'s DEBUG TIME🤪$(RESET)
 
 .PHONY			:	leaks
-leaks			:
+leaks				:
 					@make LEAKS=1
 					@echo $(RED)$(BOLD) Is there Leaks?🚰$(RESET)
+
+.PHONY			: print
+print				:
+					@make PRINT=1
+					@echo $(RED)$(BOLD) PRINTABLE BINARY $(RESET)

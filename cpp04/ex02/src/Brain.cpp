@@ -19,8 +19,21 @@ Brain::Brain(void) {
   for (int i = 0; i < 100; i++) {
     std::stringstream ss;
     ss << "Wonderful Ideas " << i;
-    _ideas[i] = ss.str();
+    this->_ideas[i] = ss.str();
   }
 }
+
+Brain::Brain(const Brain& src) { *this = src; }
+
+Brain& Brain::operator=(const Brain& src) {
+  for (int i = 0; i < 100; i++) {
+    this->_ideas[i] = src._ideas[i];
+  }
+  return *this;
+}
+
+std::string Brain::getIdea(int index) const { return this->_ideas[index]; }
+
+void Brain::setIdea(int index, std::string idea) { this->_ideas[index] = idea; }
 
 Brain::~Brain(void) { std::cout << "Brain destructor called\n"; }

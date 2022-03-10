@@ -24,10 +24,10 @@ class Cat : public Animal {
   Cat(const Cat& src);
   Cat& operator=(const Cat& src);
 
-  Brain* getBrains(void) const;
-
   void makeSound(void) const;
-  ~Cat(void);
+  Brain* getBrain(void) const;
+
+  virtual ~Cat(void);
 };
 
 #endif  // CAT_HPP

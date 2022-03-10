@@ -26,8 +26,6 @@ Animal& Animal::operator=(const Animal& src) {
 
 std::string Animal::getType(void) const { return this->_type; }
 
-void Animal::makeSound(void) const { std::cout << "Hi I'm Animal.\n"; }
-
 Animal::~Animal(void) {
   std::cout << "Animal " << this->_type << " Destructor Called\n";
 }

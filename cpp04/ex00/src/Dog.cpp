@@ -18,9 +18,13 @@ Dog::Dog(void) : Animal() {
   std::cout << "Dog constructor called\n";
 }
 
-Dog::Dog(const Dog& src) { *this = src; }
+Dog::Dog(const Dog& src) : Animal() {
+  std::cout << "Dog copy constructor called\n";
+  this->_type = src.getType();
+}
 
 Dog& Dog::operator=(const Dog& src) {
+  std::cout << "Dog assign operator called\n";
   this->_type = src.getType();
   return *this;
 }

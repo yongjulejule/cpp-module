@@ -24,7 +24,8 @@ class Brain {
 
   Brain& operator=(const Brain& src);
 
-  std::string* getIdeas(void);
+  std::string getIdea(int index) const;
+  void setIdea(int index, std::string idea);
 
   ~Brain(void);
 };

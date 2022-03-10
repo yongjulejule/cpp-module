@@ -33,6 +33,8 @@ Brain& Brain::operator=(const Brain& src) {
   return *this;
 }
 
-std::string* Brain::getIdeas(void) const { return (std::string*)this->_ideas; }
+std::string Brain::getIdea(int index) const { return this->_ideas[index]; }
+
+void Brain::setIdea(int index, std::string idea) { this->_ideas[index] = idea; }
 
 Brain::~Brain(void) { std::cout << "Brain destructor called\n"; }
