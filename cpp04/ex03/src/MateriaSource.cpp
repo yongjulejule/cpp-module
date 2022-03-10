@@ -15,8 +15,8 @@
 #include <iostream>
 
 MateriaSource::MateriaSource(void) {
-  this->_materias = new AMateria*[NUMBER_OF_MATERIAS];
-  for (int i = 0; i < NUMBER_OF_MATERIAS; i++) {
+  this->_materias = new AMateria*[NUMBER_OF_SLOTS];
+  for (int i = 0; i < NUMBER_OF_SLOTS; i++) {
     this->_materias[i] = NULL;
   }
 }
@@ -26,16 +26,27 @@ MateriaSource::MateriaSource(MateriaSource const& src) : _materias(NULL) {
 }
 
 MateriaSource const& MateriaSource::operator=(MateriaSource const& src) {
-  if (this->_materias != NULL) delete this->_materias;
-  this->_materias = new AMateria*[NUMBER_OF_MATERIAS];
-  for (int i = 0; i < NUMBER_OF_MATERIAS; i++) {
-    this->_materias[i] = src._materias[i];
+  if (this->_materias != NULL) {
+    for (int i = 0; i < NUMBER_OF_SLOTS; i++) {
+      if (this->_materias[i] != NULL) {
+        delete this->_materias[i];
+      }
+    }
+    delete[] this->_materias;
+  }
+  this->_materias = new AMateria*[NUMBER_OF_SLOTS];
+  for (int i = 0; i < NUMBER_OF_SLOTS; i++) {
+    if (src._materias[i] != NULL) {
+      this->_materias[i] = src._materias[i]->clone();
+    } else {
+      this->_materias[i] = NULL;
+    }
   }
   return *this;
 }
 
 void MateriaSource::learnMateria(AMateria* materia) {
-  for (int i = 0; i < NUMBER_OF_MATERIAS; i++) {
+  for (int i = 0; i < NUMBER_OF_SLOTS; i++) {
     if (this->_materias[i] == NULL) {
       this->_materias[i] = materia;
       return;
@@ -44,7 +55,7 @@ void MateriaSource::learnMateria(AMateria* materia) {
 }
 
 AMateria* MateriaSource::createMateria(std::string const& type) {
-  for (int i = 0; i < NUMBER_OF_MATERIAS; i++) {
+  for (int i = 0; i < NUMBER_OF_SLOTS; i++) {
     if (this->_materias[i] != NULL) {
       if (type == this->_materias[i]->getType())
         return this->_materias[i]->clone();
@@ -53,4 +64,9 @@ AMateria* MateriaSource::createMateria(std::string const& type) {
   return NULL;
 }
 
-MateriaSource::~MateriaSource(void) { delete this->_materias; }
+MateriaSource::~MateriaSource(void) {
+  for (int i = 0; i < NUMBER_OF_SLOTS; i++) {
+    if (this->_materias[i] != NULL) delete this->_materias[i];
+  }
+  delete[] this->_materias;
+}

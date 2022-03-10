@@ -14,7 +14,7 @@
 
 #include "IMateriaSource.hpp"
 
-#define NUMBER_OF_MATERIAS 2
+#define NUMBER_OF_SLOTS 4
 
 class MateriaSource : public IMateriaSource {
  private:

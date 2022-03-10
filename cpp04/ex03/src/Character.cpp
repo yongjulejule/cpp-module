@@ -34,10 +34,12 @@ Character::Character(Character const &src) : _name(src._name), _slot(NULL) {
 }
 
 Character const &Character::operator=(Character const &src) {
-  if (this->_slot != NULL) delete this->_slot;
+  if (this->_slot != NULL) {
+    delete[] this->_slot;
+  }
   this->_slot = new AMateria *[NUMBER_OF_SLOTS];
   for (int i = 0; i < NUMBER_OF_SLOTS; i++) {
-    this->_slot[i] = src._slot[i]->clone();
+    this->_slot[i] = src._slot[i];
   }
   return *this;
 }
@@ -66,5 +68,5 @@ void Character::use(int idx, ICharacter &target) {
 }
 
 Character::~Character(void) {
-  if (this->_slot != NULL) delete this->_slot;
+  if (this->_slot != NULL) delete[] this->_slot;
 }
