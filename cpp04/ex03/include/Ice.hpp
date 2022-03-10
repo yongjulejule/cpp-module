@@ -17,7 +17,7 @@
 class Ice : public AMateria {
  public:
   Ice(void);
-  Ice(Ice const &);
+  Ice(Ice const &src);
   Ice const &operator=(Ice const &);
 
   AMateria *clone(void) const;

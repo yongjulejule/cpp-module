@@ -13,27 +13,22 @@
 
 #include <iostream>
 
-Ice::Ice(void) : AMateria("ice") { std::cout << "Ice::Ice(void)\n"; }
+#include "ICharacter.hpp"
+
+Ice::Ice(void) : AMateria("ice") {}
 
 Ice::Ice(Ice const &src) : AMateria("ice") {
-  std::cout << "Ice::Ice(Ice const &src)\n";
   if (this != &src) {
     *this = src;
   }
 }
 
-Ice const &Ice::operator=(Ice const &src) {
-  std::cout << "Ice::operator=(Ice const &src)\n";
-  return src;
-}
+Ice const &Ice::operator=(Ice const &src) { return src; }
 
-AMateria *Ice::clone(void) const {
-  std::cout << "Ice::clone(void) const\n";
-  return new Ice(*this);
-}
+AMateria *Ice::clone(void) const { return new Ice(*this); }
 
 void Ice::use(ICharacter &target) {
   std::cout << "* shoots an ice bolt at " << target.getName() << " *\n";
 }
 
-Ice::~Ice(void) { std::cout << "Ice::~Ice(void)\n"; }
+Ice::~Ice(void) {}

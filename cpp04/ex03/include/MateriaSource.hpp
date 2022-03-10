@@ -23,10 +23,13 @@ class MateriaSource : public IMateriaSource {
  public:
   MateriaSource(void);
   MateriaSource(MateriaSource const &src);
-  ~MateriaSource(void);
+
   MateriaSource const &operator=(MateriaSource const &src);
+
   void learnMateria(AMateria *materia);
   AMateria *createMateria(std::string const &type);
+
+  ~MateriaSource(void);
 };
 
 #endif  // MATERIASOURCE_HPP

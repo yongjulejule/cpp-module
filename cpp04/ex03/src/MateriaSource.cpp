@@ -15,33 +15,28 @@
 #include <iostream>
 
 MateriaSource::MateriaSource(void) {
-  std::cout << "MateriaSource::MateriaSource(void)\n";
   this->_materias = new AMateria*[NUMBER_OF_MATERIAS];
   for (int i = 0; i < NUMBER_OF_MATERIAS; i++) {
-    this->_materias[i] = nullptr;
+    this->_materias[i] = NULL;
   }
 }
 
-MateriaSource::MateriaSource(MateriaSource const& src) {
-  std::cout << "MateriaSource::MateriaSource(MateriaSource const& src)\n";
+MateriaSource::MateriaSource(MateriaSource const& src) : _materias(NULL) {
   *this = src;
 }
 
 MateriaSource const& MateriaSource::operator=(MateriaSource const& src) {
-  std::cout << "MateriaSource::operator=(MateriaSource const& src)\n";
-  delete this->_materias;
+  if (this->_materias != NULL) delete this->_materias;
   this->_materias = new AMateria*[NUMBER_OF_MATERIAS];
   for (int i = 0; i < NUMBER_OF_MATERIAS; i++) {
     this->_materias[i] = src._materias[i];
   }
-  return src;
+  return *this;
 }
 
 void MateriaSource::learnMateria(AMateria* materia) {
-  std::cout << "MateriaSource::learnMateria(AMateria* materia) type : "
-            << materia->getType() << "\n";
   for (int i = 0; i < NUMBER_OF_MATERIAS; i++) {
-    if (this->_materias[i] == nullptr) {
+    if (this->_materias[i] == NULL) {
       this->_materias[i] = materia;
       return;
     }
@@ -49,18 +44,13 @@ void MateriaSource::learnMateria(AMateria* materia) {
 }
 
 AMateria* MateriaSource::createMateria(std::string const& type) {
-  std::cout << "MateriaSource::createMateria(std::string const& type) type : "
-            << type << "\n";
   for (int i = 0; i < NUMBER_OF_MATERIAS; i++) {
-    if (this->_materias[i] != nullptr) {
+    if (this->_materias[i] != NULL) {
       if (type == this->_materias[i]->getType())
         return this->_materias[i]->clone();
     }
   }
-  return nullptr;
+  return NULL;
 }
 
-MateriaSource::~MateriaSource(void) {
-  std::cout << "MaterialSource::~MateriaSource(void)\n";
-  delete this->_materias;
-}
+MateriaSource::~MateriaSource(void) { delete this->_materias; }

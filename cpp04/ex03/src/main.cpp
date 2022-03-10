@@ -32,6 +32,11 @@ int main(void) {
   me->use(1, *bob);
   bob->use(0, *me);
 
+  Character* ch1 = new Character("ch1");
+  Character* ch2 = new Character(*ch1);
+  delete ch1;
+  delete ch2;
+
   delete bob;
   delete me;
   delete src;

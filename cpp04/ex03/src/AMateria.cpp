@@ -13,20 +13,23 @@
 
 #include <iostream>
 
-AMateria::AMateria(std::string const& type) : _type(type) {
-  std::cout << "Abstract Materia class constructor called with type : " << type
-            << std::endl;
+#include "ICharacter.hpp"
+
+AMateria::AMateria(void) : _type("") {}
+
+AMateria::AMateria(std::string const& type) : _type(type) {}
+
+AMateria::AMateria(AMateria const& src) : _type(src._type) {}
+
+AMateria& AMateria::operator=(AMateria const& src) {
+  this->_type = src._type;
+  return *this;
 }
 
 std::string const& AMateria::getType(void) const { return this->_type; }
 
 void AMateria::use(ICharacter& target) {
-  ICharacter* tmp = &target;
-  std::cout << "Abstract Materia class use method called with target : "
-            << tmp->getName() << std::endl;
+  std::cout << "* Just Cheering for " << target.getName() << " *\n";
 }
 
-AMateria::~AMateria(void) {
-  std::cout << "Abstract Materia class destructor called which type is "
-            << this->_type << std::endl;
-}
+AMateria::~AMateria(void) {}

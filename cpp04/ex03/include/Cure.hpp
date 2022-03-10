@@ -17,7 +17,7 @@
 class Cure : public AMateria {
  public:
   Cure(void);
-  Cure(Cure const &);
+  Cure(Cure const & src);
   Cure const &operator=(Cure const &);
 
   AMateria *clone(void) const;

@@ -17,7 +17,7 @@ Character::Character(void) : _name("noName") {
   std::cout << "Character::Character(void)\n";
   this->_slot = new AMateria *[NUMBER_OF_SLOTS];
   for (int i = 0; i < NUMBER_OF_SLOTS; i++) {
-    this->_slot[i] = nullptr;
+    this->_slot[i] = NULL;
   }
 }
 
@@ -26,7 +26,7 @@ Character::Character(std::string const &name) : _name(name) {
             << "\n";
   this->_slot = new AMateria *[NUMBER_OF_SLOTS];
   for (int i = 0; i < NUMBER_OF_SLOTS; i++) {
-    this->_slot[i] = nullptr;
+    this->_slot[i] = NULL;
   }
 }
 
@@ -42,7 +42,7 @@ Character const &Character::operator=(Character const &src) {
   delete this->_slot;
   this->_slot = new AMateria *;
   for (int i = 0; i < NUMBER_OF_SLOTS; i++) {
-    if (src._slot[i] == nullptr) return *this;
+    if (src._slot[i] == NULL) return *this;
     this->_slot[i] = src._slot[i];
   }
   return *this;
@@ -54,7 +54,7 @@ void Character::equip(AMateria *materia) {
   std::cout << "Character::equip(AMateria *materia) type : "
             << materia->getType() << "\n";
   for (int i = 0; i < NUMBER_OF_SLOTS; i++) {
-    if (this->_slot[i] == nullptr) {
+    if (this->_slot[i] == NULL) {
       this->_slot[i] = materia;
       return;
     }
@@ -65,7 +65,7 @@ void Character::equip(AMateria *materia) {
 void Character::unequip(int idx) {
   std::cout << "Character::unequip(int idx)\n";
   if (idx >= 0 && idx < NUMBER_OF_SLOTS) {
-    this->_slot[idx] = nullptr;
+    this->_slot[idx] = NULL;
   }
 }
 
@@ -73,7 +73,7 @@ void Character::use(int idx, ICharacter &target) {
   std::cout << "Character::use(int idx, ICharacter& target) idx, target : "
             << idx << ", " << target.getName() << "\n";
   if (idx >= 0 && idx < NUMBER_OF_SLOTS) {
-    if (this->_slot[idx] != nullptr) this->_slot[idx]->use(target);
+    if (this->_slot[idx] != NULL) this->_slot[idx]->use(target);
   }
 }
 

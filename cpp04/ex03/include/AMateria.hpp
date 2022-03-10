@@ -14,8 +14,6 @@
 
 #include <string>
 
-#include "ICharacter.hpp"
-
 class ICharacter;
 
 class AMateria {
@@ -23,7 +21,10 @@ class AMateria {
   std::string _type;
 
  public:
+  AMateria(void);
   AMateria(std::string const& type);
+  AMateria(AMateria const& src);
+  AMateria& operator=(AMateria const& src);
 
   std::string const& getType(void) const;  // Returns the materia type
   virtual AMateria* clone(void) const = 0;
