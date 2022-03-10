@@ -25,7 +25,10 @@ class Form {
   bool _isSigned;
 
  public:
+  Form(void);
   Form(std::string name, int gradeReqToSign, int gradeReqToExec);
+  Form(Form const &src);
+  Form &operator=(Form const &src);
 
   class GradeTooHighException : public std::exception {
    public:

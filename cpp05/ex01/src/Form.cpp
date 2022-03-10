@@ -13,6 +13,12 @@
 
 #include "Bureaucrat.hpp"
 
+Form::Form(void)
+    : _name("noName"),
+      _gradeReqToSign(150),
+      _gradeReqToExec(150),
+      _isSigned(false) {}
+
 Form::Form(std::string name, int gradeReqToSign, int gradeReqToExec)
     : _name(name),
       _gradeReqToSign(gradeReqToSign),
@@ -23,6 +29,11 @@ Form::Form(std::string name, int gradeReqToSign, int gradeReqToExec)
   if (gradeReqToSign > 150 || gradeReqToExec > 150)
     throw Form::GradeTooLowException();
   std::cout << "Form <" << name << "> is contructed.\n";
+}
+
+Form &Form::operator=(Form const &src) {
+  this->_isSigned = src._isSigned;
+  return *this;
 }
 
 std::string Form::getName(void) const { return this->_name; }

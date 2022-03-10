@@ -21,6 +21,7 @@ int main(void) {
   } catch (std::exception &e) {
     std::cout << e.what() << std::endl;
   }
+  std::cout << "====================\n";
   try {
     Bureaucrat test("test", 3);
     for (int i = 0; i < 10; i++) {
@@ -30,11 +31,13 @@ int main(void) {
   } catch (std::exception &e) {
     std::cout << e.what() << std::endl;
   }
+  std::cout << "====================\n";
   try {
     Bureaucrat test("test", 0);
   } catch (std::exception &e) {
     std::cout << e.what() << std::endl;
   }
+  std::cout << "====================\n";
   try {
     Bureaucrat test("test", 151);
   } catch (std::exception &e) {

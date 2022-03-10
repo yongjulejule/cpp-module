@@ -13,7 +13,7 @@
 
 #include "Form.hpp"
 
-Bureaucrat::Bureaucrat(void) {}
+Bureaucrat::Bureaucrat(void) : _name("noName"), _grade(150) {}
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
   if (grade < 1)
@@ -23,9 +23,13 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
   this->_grade = grade;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &src) { *this = src; }
+Bureaucrat::Bureaucrat(Bureaucrat const &src)
+    : _name(src._name), _grade(src._grade) {}
 
-Bureaucrat const &Bureaucrat::operator=(Bureaucrat const &src) { return src; }
+Bureaucrat &Bureaucrat::operator=(Bureaucrat const &src) {
+  this->_grade = src._grade;
+  return *this;
+}
 
 const std::string Bureaucrat::getName(void) const { return this->_name; }
 
