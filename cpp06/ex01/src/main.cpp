@@ -32,7 +32,7 @@ int main(void) {
   std::cout << ptr2->price << std::endl;
   std::cout << ptr2->name << std::endl;
 
-  std::cout << "Are addresses equal? (0: false, 1: true) => " << (ptr == ptr2)
+  std::cout << std::boolalpha << "Are addresses equal? =>" << (ptr == ptr2)
             << std::endl;
 
   delete ptr;

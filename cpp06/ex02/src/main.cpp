@@ -15,6 +15,7 @@
 #include "B.hpp"
 #include "C.hpp"
 #include "generate.hpp"
+#include "identify.hpp"
 
 int main(void) {
   for (int i = 0; i < 100; i++) {

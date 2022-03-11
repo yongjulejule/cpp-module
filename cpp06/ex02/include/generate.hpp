@@ -12,8 +12,8 @@
 #ifndef GENERATE_HPP
 #define GENERATE_HPP
 
+class Base;
+
 Base* generate(void);
-void identify(Base* p);
-void identify(Base& p);
 
 #endif  // GENERATE_HPP

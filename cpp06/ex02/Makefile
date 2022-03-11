@@ -18,6 +18,7 @@ SRCS			= $(addprefix $(SRCS_DIR), \
 				  main.cpp \
 					generate.cpp \
 					Base.cpp \
+					identify.cpp \
 				)
 
 
