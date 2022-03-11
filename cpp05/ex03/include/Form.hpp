@@ -26,6 +26,7 @@
 #define BOLD "\033[1m"
 #define L_PUPLE "\033[1;35m"
 #define L_CYAN "\033[1;96m"
+#define MAGENTA "\033[35m"
 
 class Bureaucrat;
 
@@ -37,7 +38,10 @@ class Form {
   bool _isSigned;
 
  public:
+  Form(void);
   Form(std::string name, int gradeReqToSign, int gradeReqToExec);
+  Form(Form const &src);
+  Form &operator=(Form const &src);
 
   class GradeTooHighException : public std::exception {
    public:

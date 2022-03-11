@@ -17,7 +17,9 @@
 #include "ShrubberyCreationForm.hpp"
 
 Intern::Intern(void){};
+
 Intern::Intern(Intern const &src) { *this = src; };
+
 Intern &Intern::operator=(Intern const &src) {
   (void)src;
   return *this;

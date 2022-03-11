@@ -16,13 +16,18 @@ int main(void) {
   try {
     Form test("Apple Aquisition Contract", 5, 3);
     std::cout << test << std::endl;
+
     Bureaucrat me("jule", 6);
     std::cout << me << std::endl;
-    test.beSigned(me);
+
+    me.signForm(test);
+
     me.incrementGrade();
     std::cout << me << std::endl;
-    test.beSigned(me);
+
+    me.signForm(test);
     std::cout << test << std::endl;
+
   } catch (std::exception &e) {
     std::cout << e.what() << std::endl;
   }
@@ -33,7 +38,7 @@ int main(void) {
     Bureaucrat me("jule", 1);
     std::cout << me << std::endl;
     me.incrementGrade();
-    test.beSigned(me);
+    me.signForm(test);
     std::cout << test << std::endl;
   } catch (std::exception &e) {
     std::cout << e.what() << std::endl;

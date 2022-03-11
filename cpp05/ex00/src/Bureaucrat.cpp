@@ -34,14 +34,14 @@ const std::string Bureaucrat::getName(void) const { return this->_name; }
 int Bureaucrat::getGrade(void) const { return this->_grade; }
 
 void Bureaucrat::incrementGrade(void) {
-  if (this->getGrade() > 1)
+  if (this->_grade > 1)
     this->_grade -= 1;
   else
     throw Bureaucrat::GradeTooHighException();
 }
 
 void Bureaucrat::decrementGrade(void) {
-  if (this->getGrade() < 150)
+  if (this->_grade < 150)
     this->_grade += 1;
   else
     throw Bureaucrat::GradeTooLowException();

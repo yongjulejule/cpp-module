@@ -13,6 +13,12 @@
 
 #include "Bureaucrat.hpp"
 
+Form::Form(void)
+    : _name("noName"),
+      _gradeReqToSign(150),
+      _gradeReqToExec(150),
+      _isSigned(false) {}
+
 Form::Form(std::string name, int gradeReqToSign, int gradeReqToExec)
     : _name(name),
       _gradeReqToSign(gradeReqToSign),
@@ -25,6 +31,11 @@ Form::Form(std::string name, int gradeReqToSign, int gradeReqToExec)
   std::cout << "Form <" << name << "> is contructed.\n";
 }
 
+Form &Form::operator=(Form const &src) {
+  this->_isSigned = src._isSigned;
+  return *this;
+}
+
 std::string Form::getName(void) const { return this->_name; }
 
 int Form::getGradeReqToSign(void) const { return this->_gradeReqToSign; }
@@ -34,22 +45,11 @@ int Form::getGradeReqToExec(void) const { return this->_gradeReqToExec; }
 bool Form::getIsSigned(void) const { return this->_isSigned; }
 
 void Form::beSigned(Bureaucrat const &bureaucrat) {
-  if (this->getGradeReqToSign() >= bureaucrat.getGrade()) {
-    if (this->getIsSigned())
-      std::cout << "Form <" << this->getName() << "> is already signed\n";
-    else {
-      std::cout << "<" << bureaucrat.getName() << "> signs <" << this->getName()
-                << ">\n";
-      this->_isSigned = true;
-    }
-  } else {
-    std::cout << "<" << bureaucrat.getName() << "> cannot sign <"
-              << this->getName() << "> because Form grade require to sign <"
-              << this->getGradeReqToSign() << "> is higher than <"
-              << bureaucrat.getName() << ">'s grade <" << bureaucrat.getGrade()
-              << ">\n";
-  }
+  if (this->getGradeReqToSign() < bureaucrat.getGrade())
+    throw Form::GradeTooHighException();
+  this->_isSigned = true;
 }
+
 const char *Form::GradeTooHighException::what() const throw() {
   return RED_WARN "The Form Grade is Too High." RESET;
 }

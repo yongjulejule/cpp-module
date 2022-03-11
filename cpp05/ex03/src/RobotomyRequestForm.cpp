@@ -12,6 +12,10 @@
 
 #include "RobotomyRequestForm.hpp"
 
+#include <sys/time.h>
+
+#include <cstdlib>
+
 #include "Bureaucrat.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target)
@@ -28,15 +32,32 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(
   return *this;
 }
 
+int generateRandomNumber(int start, int end) {
+  static bool first = true;
+  if (first) {
+    struct timeval tp;
+    gettimeofday(&tp, NULL);
+    srand(tp.tv_usec);
+    rand();
+    first = false;
+  }
+  return ((static_cast<float>(rand())) / RAND_MAX) *
+         (static_cast<long long>(end) - start + 1);
+}
+
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const {
+  if (!this->getIsSigned()) throw Form::ExecWithoutSignException();
   if (executor.getGrade() > this->getGradeReqToExec())
     throw Form::GradeTooHighException();
-  if (!this->getIsSigned()) throw Form::ExecWithoutSignException();
   std::cout << YELLOW
       "\nDRILLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL"
       "LLLLLLLLLLLLLLLLLLLLLL...\n\n";
-  std::cout << L_CYAN "<" << this->_target
-            << "> has been robotomized 50% of the time.\n" RESET;
+  if (generateRandomNumber(1, 100) & 1)
+    std::cout << L_CYAN "<" << this->_target
+              << "> has been successfully robotomized.\n" RESET;
+  else
+    std::cout << MAGENTA "<" << this->_target
+              << "> fail to robotomized. Try Again HAHA! \n" RESET;
   std::cout << "<" << this->_target << "> is executed!\n";
 }
 

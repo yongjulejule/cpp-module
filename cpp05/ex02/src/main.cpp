@@ -20,13 +20,10 @@ void testShrubberyCreationForm(void) {
     Form *test = new ShrubberyCreationForm("APPLE");
     std::cout << *test << std::endl;
     Bureaucrat me("jule", 6);
-    std::cout << me << std::endl;
-    test->beSigned(me);
-    me.incrementGrade();
-    std::cout << me << std::endl;
-    test->beSigned(me);
+    me.signForm(*test);
     std::cout << *test << std::endl;
     me.executeForm(*test);
+    delete test;
   } catch (std::exception &e) {
     std::cout << e.what() << std::endl;
   }
@@ -38,12 +35,12 @@ void testShrubberyCreationForm(void) {
     std::cout << *test << std::endl;
     std::cout << me << std::endl;
     me.executeForm(*test);
-    test->beSigned(me);
+    me.signForm(*test);
     me.incrementGrade();
     std::cout << me << std::endl;
-    test->beSigned(me);
     std::cout << *test << std::endl;
     me.executeForm(*test);
+    delete test;
   } catch (std::exception &e) {
     std::cout << e.what() << std::endl;
   }
@@ -54,12 +51,12 @@ void testShrubberyCreationForm(void) {
     Bureaucrat me("Daemon", 146);
     std::cout << *test << std::endl;
     std::cout << me << std::endl;
-    test->beSigned(me);
+    me.signForm(*test);
     me.incrementGrade();
     std::cout << me << std::endl;
-    test->beSigned(me);
     std::cout << *test << std::endl;
     me.executeForm(*test);
+    delete test;
   } catch (std::exception &e) {
     std::cout << e.what() << std::endl;
   }
@@ -72,10 +69,10 @@ void testRobotomyRequestForm(void) {
     std::cout << *test << std::endl;
     Bureaucrat me("jule", 6);
     std::cout << me << std::endl;
-    test->beSigned(me);
+    me.signForm(*test);
     me.incrementGrade();
     std::cout << me << std::endl;
-    test->beSigned(me);
+    me.signForm(*test);
     std::cout << *test << std::endl;
     me.executeForm(*test);
   } catch (std::exception &e) {
@@ -89,10 +86,10 @@ void testRobotomyRequestForm(void) {
     std::cout << *test << std::endl;
     std::cout << me << std::endl;
     me.executeForm(*test);
-    test->beSigned(me);
+    me.signForm(*test);
     me.incrementGrade();
     std::cout << me << std::endl;
-    test->beSigned(me);
+    me.signForm(*test);
     std::cout << *test << std::endl;
     me.executeForm(*test);
   } catch (std::exception &e) {
@@ -105,10 +102,10 @@ void testRobotomyRequestForm(void) {
     Bureaucrat me("Daemon", 73);
     std::cout << *test << std::endl;
     std::cout << me << std::endl;
-    test->beSigned(me);
+    me.signForm(*test);
     me.incrementGrade();
     std::cout << me << std::endl;
-    test->beSigned(me);
+    me.signForm(*test);
     std::cout << *test << std::endl;
     me.executeForm(*test);
   } catch (std::exception &e) {
@@ -123,10 +120,10 @@ void testPresidentialPardonForm(void) {
     std::cout << *test << std::endl;
     Bureaucrat me("jule", 6);
     std::cout << me << std::endl;
-    test->beSigned(me);
+    me.signForm(*test);
     me.incrementGrade();
     std::cout << me << std::endl;
-    test->beSigned(me);
+    me.signForm(*test);
     std::cout << *test << std::endl;
     me.executeForm(*test);
   } catch (std::exception &e) {
@@ -140,10 +137,10 @@ void testPresidentialPardonForm(void) {
     std::cout << *test << std::endl;
     std::cout << me << std::endl;
     me.executeForm(*test);
-    test->beSigned(me);
+    me.signForm(*test);
     me.incrementGrade();
     std::cout << me << std::endl;
-    test->beSigned(me);
+    me.signForm(*test);
     std::cout << *test << std::endl;
     me.executeForm(*test);
   } catch (std::exception &e) {
@@ -156,10 +153,10 @@ void testPresidentialPardonForm(void) {
     Bureaucrat me("Daemon", 146);
     std::cout << *test << std::endl;
     std::cout << me << std::endl;
-    test->beSigned(me);
+    me.signForm(*test);
     me.incrementGrade();
     std::cout << me << std::endl;
-    test->beSigned(me);
+    me.signForm(*test);
     std::cout << *test << std::endl;
     me.executeForm(*test);
   } catch (std::exception &e) {

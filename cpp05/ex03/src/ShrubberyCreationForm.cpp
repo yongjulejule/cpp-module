@@ -30,9 +30,9 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(
 }
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
+  if (!this->getIsSigned()) throw Form::ExecWithoutSignException();
   if (executor.getGrade() > this->getGradeReqToExec())
     throw Form::GradeTooHighException();
-  if (!this->getIsSigned()) throw Form::ExecWithoutSignException();
   std::ofstream out;
   out.exceptions(std::ios::badbit | std::ios::failbit);
   out.open(this->_target + "_shrubbery", std::ios::out | std::ios::trunc);
