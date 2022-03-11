@@ -10,7 +10,6 @@
  */
 
 #include <cfloat>
-#include <climits>
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -40,7 +39,11 @@ void printInt(std::string const arg, long long c) {
 
 void printFloat(std::string const arg, long double d) {
   std::cout << "float: ";
-  if (!isinf(d) && (fabs(d) > FLT_MAX || arg == "impossible")) {
+  if (arg == "impossible") {
+    std::cout << "impossible\n";
+    return;
+  }
+  if (!isinf(d) && (fabs(d) > FLT_MAX)) {
     std::cout << "impossible\n";
     return;
   }
@@ -52,7 +55,11 @@ void printFloat(std::string const arg, long double d) {
 
 void printDouble(std::string const arg, long double d) {
   std::cout << "double: ";
-  if (!isinf(d) && (fabsl(d) > DBL_MAX || arg == "impossible")) {
+  if (arg == "impossible") {
+    std::cout << "impossible\n";
+    return;
+  }
+  if (!isinf(d) && (fabsl(d) > DBL_MAX)) {
     std::cout << "impossible\n";
     return;
   }
@@ -65,9 +72,13 @@ void printDouble(std::string const arg, long double d) {
 }
 
 void printArgument(std::string const arg) {
-  char *remain;
-  long long c = strtoll(arg.c_str(), &remain, 10);
-  if (*remain == '\0' || (*remain == 'f' && *(remain + 1) == '\0')) {
+  char *remainInt = NULL;
+  long long c = strtoll(arg.c_str(), &remainInt, 10);
+
+  if (*remainInt == '.') remainInt++;
+  while (*remainInt == '0') remainInt++;
+
+  if (*remainInt == '\0' || (*remainInt == 'f' && *(remainInt + 1) == '\0')) {
     printChar(arg, c);
     printInt(arg, c);
   } else {
@@ -75,8 +86,10 @@ void printArgument(std::string const arg) {
     printInt("impossible", c);
   }
 
-  long double d = strtold(arg.c_str(), &remain);
-  if (*remain == '\0' || (*remain == 'f' && *(remain + 1) == '\0')) {
+  char *remainFloat = NULL;
+  long double d = strtold(arg.c_str(), &remainFloat);
+  if (*remainFloat == '\0' ||
+      (*remainFloat == 'f' && *(remainFloat + 1) == '\0')) {
     printFloat(arg, d);
     printDouble(arg, d);
   } else {

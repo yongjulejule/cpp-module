@@ -12,12 +12,6 @@
 #ifndef PRINT_HPP
 #define PRINT_HPP
 
-#include <cfloat>
-#include <climits>
-#include <cstdlib>
-#include <iostream>
-#include <string>
-
 void printArgument(std::string const arg);
 
 #endif  // PRINT_HPP
