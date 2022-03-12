@@ -48,7 +48,8 @@ void printFloat(std::string const arg, long double d) {
     return;
   }
   std::cout << static_cast<float>(d);
-  if (static_cast<int>(d) == d && d < fabs(1000000)) std::cout << ".0";
+  if (static_cast<int>(d) == d && d < 1000000 && d >= -100000)
+    std::cout << ".0";
   std::cout << "f\n";
   return;
 }
@@ -64,9 +65,8 @@ void printDouble(std::string const arg, long double d) {
     return;
   }
   std::cout << static_cast<double>(d);
-  if (static_cast<int>(d) == d && d < fabs(1000000)) {
+  if (static_cast<int>(d) == d && d < 1000000 && d >= -100000)
     std::cout << ".0";
-  }
   std::cout << std::endl;
   return;
 }
@@ -78,7 +78,8 @@ void printArgument(std::string const arg) {
   if (*remainInt == '.') remainInt++;
   while (*remainInt == '0') remainInt++;
 
-  if (*remainInt == '\0' || (*remainInt == 'f' && *(remainInt + 1) == '\0')) {
+  if ((*remainInt == '\0' || (*remainInt == 'f' && *(remainInt + 1) == '\0')) &&
+      arg[arg.size() - 1] != '.') {
     printChar(arg, c);
     printInt(arg, c);
   } else {
@@ -88,8 +89,9 @@ void printArgument(std::string const arg) {
 
   char *remainFloat = NULL;
   long double d = strtold(arg.c_str(), &remainFloat);
-  if (*remainFloat == '\0' ||
-      (*remainFloat == 'f' && *(remainFloat + 1) == '\0')) {
+  if ((*remainFloat == '\0' ||
+       (*remainFloat == 'f' && *(remainFloat + 1) == '\0')) &&
+      arg[arg.size() - 1] != '.') {
     printFloat(arg, d);
     printDouble(arg, d);
   } else {

@@ -19,6 +19,9 @@
 void deepCopyTest(void) {
   std::cout << "==========Here is Test for Brain Deep copy============\n";
   {
+    int* a;
+    int* b;
+    b = a;
     Dog* DogOrigin = new Dog();
     Brain* DogOriginBrain = DogOrigin->getBrain();
     DogOriginBrain->setIdea(0, "I am a dog!!!!!!!!!!!!");
@@ -71,6 +74,9 @@ int main(void) {
   const Animal* meta = new Animal();
   const Animal* dog = new Dog();
   const Animal* cat = new Cat();
+  Dog d1;
+  Dog d2;
+  d1 = d2;
 
   std::cout << meta->getType() << std::endl;
   std::cout << dog->getType() << std::endl;
