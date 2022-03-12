@@ -25,9 +25,7 @@ class Array {
   Array(const Array &src) : _size(0), _arr(NULL) { *this = src; };
 
   Array &operator=(const Array &src) {
-    if (this->_arr) {
-      delete[] this->_arr;
-    }
+    if (this->_arr) delete[] this->_arr;
     const unsigned int srcSize = src.getSize();
     this->_arr = new T[src._size];
     for (unsigned int idx = 0; idx < srcSize; idx++) {
@@ -41,6 +39,7 @@ class Array {
     if (idx >= this->_size) throw Array<T>::OutOfRangeException();
     return this->_arr[idx];
   };
+
   unsigned int getSize(void) const { return this->_size; };
   class OutOfRangeException : public std::exception {
     const char *what() const throw() { return "Array: Index is out of range."; }
