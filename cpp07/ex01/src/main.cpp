@@ -14,7 +14,7 @@
 #include "iter.hpp"
 
 template <typename T>
-void printArray(T& member) {
+void printArray(const T& member) {
   std::cout << member << std::endl;
 }
 
