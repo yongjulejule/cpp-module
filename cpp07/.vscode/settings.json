@@ -63,5 +63,6 @@
 		"vector": "cpp",
 		"__undef_macros": "cpp",
 		"fstream": "cpp"
-	}
+	},
+	"C_Cpp.errorSquiggles": "Disabled"
 }
