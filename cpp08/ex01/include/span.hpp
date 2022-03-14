@@ -13,7 +13,6 @@
 #define SPAN_HPP
 
 #include <iostream>
-#include <utility>
 #include <vector>
 
 class Span {
@@ -31,6 +30,8 @@ class Span {
   typedef std::vector<int>::iterator iterator;
 
   void addNumber(int number);
+  void addNumber(std::vector<int>::iterator begin,
+                 std::vector<int>::iterator end);
   int shortestSpan(void);
   int longestSpan(void);
 

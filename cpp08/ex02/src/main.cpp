@@ -65,8 +65,7 @@ void myMutantStackTest(int argc, char **argv) {
   }
 }
 
-int main(int argc, char **argv) {
-  std::cout << "========== TEST IN SUBJECT ==========\n";
+void subjectStackTest(void) {
   MutantStack<int> mstack;
   mstack.push(5);
   mstack.push(17);
@@ -88,6 +87,37 @@ int main(int argc, char **argv) {
     ++it;
   }
   std::stack<int> s(mstack);
+}
+
+void canonicalTest(void) {
+  MutantStack<int> mstack;
+  for (int i = 0; i < 10; i++) mstack.push(42 + i);
+  MutantStack<int> mstackCopy(mstack);
+  mstack.push(5252);
+  MutantStack<int>::iterator it = mstack.begin();
+  MutantStack<int>::iterator ite = mstack.end();
+  while (it != ite) {
+    std::cout << *it << ", ";
+    ++it;
+  }
+  std::cout << std::endl;
+  MutantStack<int>::iterator itc = mstackCopy.begin();
+  MutantStack<int>::iterator itec = mstackCopy.end();
+  while (itc != itec) {
+    std::cout << *itc << ", ";
+    ++itc;
+  }
+  std::cout << std::endl;
+}
+
+int main(int argc, char **argv) {
+  std::cout << "========== TEST IN SUBJECT ==========\n";
+  subjectStackTest();
+
+  std::cout << "\n========== MY TEST ==========\n\n";
+  std::cout << "======== ITERATORS =========\n";
   myMutantStackTest(argc, argv);
+  std::cout << "======= CANONICAL FORM ==========\n";
+  canonicalTest();
   return 0;
 }

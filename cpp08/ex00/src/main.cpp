@@ -1,7 +1,7 @@
 /**
  * @file main.cpp
  * @author yongjule (lyjshow200@gmail.com)
- * @brief
+ * @brief test main for my easyFind
  * @version 0.1
  * @date 2022-03-04
  *
@@ -52,11 +52,14 @@ void testList(int argc, char **argv) {
 
   try {
     std::list<int>::iterator test = easyfind<std::list<int> >(l, 'a');
-    std::cout << *test << std::endl;
+    std::cout << *test << " at idx " << std::distance(l.begin(), test)
+              << std::endl;
     test = easyfind<std::list<int> >(l, 'b');
-    std::cout << *test << std::endl;
+    std::cout << *test << " at idx " << std::distance(l.begin(), test)
+              << std::endl;
     test = easyfind<std::list<int> >(l, 'c');
-    std::cout << *test << std::endl;
+    std::cout << *test << " at idx " << std::distance(l.begin(), test)
+              << std::endl;
   } catch (std::exception &e) {
     std::cout << e.what() << std::endl;
   }
@@ -74,12 +77,14 @@ void testDeque(void) {
   std::cout << std::endl;
   try {
     std::deque<int>::iterator test = easyfind<std::deque<int> >(d, 2);
-    std::cout << *test << ": idx is " << std::distance(d.begin(), test)
+    std::cout << *test << " at idx " << std::distance(d.begin(), test)
               << std::endl;
     test = easyfind<std::deque<int> >(d, 7);
-    std::cout << *test << std::endl;
+    std::cout << *test << " at idx " << std::distance(d.begin(), test)
+              << std::endl;
     test = easyfind<std::deque<int> >(d, 42);
-    std::cout << *test << std::endl;
+    std::cout << *test << " at idx " << std::distance(d.begin(), test)
+              << std::endl;
   } catch (std::exception &e) {
     std::cout << e.what() << std::endl;
   }

@@ -13,20 +13,16 @@
 
 #include <sys/time.h>
 
-#include <algorithm>
-
 Span::Span(void) : _size(0), _v() {}
 
 Span::Span(unsigned int size) : _size(size), _v() {}
 
-Span::Span(const Span &rhs) { *this = rhs; }
+Span::Span(const Span &rhs) : _size(0), _v() { *this = rhs; }
 
 Span &Span::operator=(const Span &rhs) {
-  if (this != &rhs) {
-    this->_v.clear();
-    this->_size = rhs._size;
-    this->_v = rhs._v;
-  }
+  this->_v.clear();
+  this->_size = rhs._size;
+  this->_v = rhs._v;
   return *this;
 }
 
@@ -43,27 +39,36 @@ void Span::addNumber(int number) {
   this->_v.push_back(number);
 }
 
+void Span::addNumber(iterator begin, iterator end) {
+  if (std::distance(begin, end) + std::distance(this->begin(), this->end()) >
+      this->_size)
+    throw Span::NotEnoughStorageException();
+  this->_v.insert(this->_v.end(), begin, end);
+}
+
 Span::iterator Span::begin(void) { return this->_v.begin(); }
 Span::iterator Span::end(void) { return this->_v.end(); }
 
 int Span::shortestSpan(void) {
-  if (this->_size < 2) throw Span::NotEnoughtElementsException();
+  if (this->_v.size() < 2) throw Span::NotEnoughtElementsException();
   std::vector<int> sortedV = this->_v;
   std::sort(sortedV.begin(), sortedV.end());
-  int ret = abs(sortedV[1] - sortedV[0]);
+
+  int ret = (sortedV[1] - sortedV[0]);
   for (unsigned int i = 1; i < this->_size - 1; i++) {
-    const int tmp = abs(sortedV[i + 1] - sortedV[i]);
+    const int tmp = (sortedV[i + 1] - sortedV[i]);
     if (tmp < ret) ret = tmp;
   }
   return ret;
 }
 
 int Span::longestSpan(void) {
-  if (this->_size < 2) throw Span::NotEnoughtElementsException();
+  if (this->_v.size() < 2) throw Span::NotEnoughtElementsException();
 
   Span::iterator begin = this->begin();
   Span::iterator end = this->end();
-  return abs(*std::max_element(begin, end) - *std::min_element(begin, end));
+
+  return (*std::max_element(begin, end) - *std::min_element(begin, end));
 }
 
 int generateRandomNumber(std::pair<int, int> range) {
@@ -76,7 +81,8 @@ int generateRandomNumber(std::pair<int, int> range) {
     first = false;
   }
   return ((static_cast<float>(rand())) / RAND_MAX) *
-         (static_cast<long long>(range.second) - range.first + 1);
+             (static_cast<long long>(range.second) - range.first + 1) +
+         range.first;
 }
 
 void Span::fillNumberInRange(Span::iterator begin, Span::iterator end,
@@ -87,11 +93,13 @@ void Span::fillNumberInRange(Span::iterator begin, Span::iterator end,
 }
 
 void Span::printElements(void) {
-  std::cout << "Elements: ";
-  for (Span::iterator it = this->begin(); it != this->end(); it++) {
+  std::cout << "Elements: [ ";
+
+  iterator ite = this->end();
+  for (Span::iterator it = this->begin(); it != ite; it++) {
     std::cout << *it << " ";
   }
-  std::cout << std::endl;
+  std::cout << "]\n";
 }
 
-Span::~Span(void) { this->_v.clear(); }
+Span::~Span(void) {}

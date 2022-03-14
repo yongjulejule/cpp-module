@@ -14,7 +14,9 @@
 #include <algorithm>
 
 class FailToFindException : public std::exception {
-  const char *what() const throw() { return "Fail to find in container"; }
+  const char *what() const throw() {
+    return "Fail to find the value in container";
+  }
 };
 
 template <typename T>

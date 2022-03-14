@@ -8,7 +8,7 @@ else
 	CXXFLAGS	= --std=c++98 -Wall -Wextra -Werror
 endif
 
-NAME			=  ex01 #Name of program
+NAME			=  Span #Name of program
 
 INC_DIR		= ./include/
 

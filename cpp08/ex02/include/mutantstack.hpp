@@ -36,16 +36,15 @@ class MutantStack : public std::stack<T> {
   reverse_iterator rend(void);
   const const_reverse_iterator crbegin(void);
   const const_reverse_iterator crend(void);
+
   ~MutantStack(void);
 };
 
 template <typename T>
-MutantStack<T>::MutantStack(void) {}
+MutantStack<T>::MutantStack(void) : std::stack<T>() {}
 
 template <typename T>
-MutantStack<T>::MutantStack(const MutantStack<T> &rhs) {
-  *this = rhs;
-}
+MutantStack<T>::MutantStack(const MutantStack<T> &rhs) : std::stack<T>(rhs) {}
 
 template <typename T>
 MutantStack<T> &MutantStack<T>::operator=(const MutantStack<T> &rhs) {
